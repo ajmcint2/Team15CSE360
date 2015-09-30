@@ -1,0 +1,21 @@
+Notes 
+Process model	2:00
+Iterative is better
+Agile is too much for us to meet. Schedules not	open enough
+No roles yet, but within the next week we will be able to assign roles
+Control decentralized
+We decided to program in
+Program language might not be able to run on all machines (OSX, Linux, Windows)
+Any questions on requirements?
+Are we allowed to have multiple tabs on the GUI?
+Yes as long as it meets the requirements and its in the SRS. 
+Make keys for each profile
+Change in speed clarification?
+Account for acceleration, deceleration, constant speed
+What is the deliverable?
+No prototype just a mock up
+Percentage on risk management is an estimated weight.
+Project Schedule
+Recommending Gant chart
+Showed us example SRS
+3:00
