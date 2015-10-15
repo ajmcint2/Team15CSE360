@@ -1,0 +1,28 @@
+Project Schedule:
+Umbrella Activities
+Names included
+Bi Weekly Meeting
+Slack Time?
+
+Use Cases:
+Go with iterations
+Needs more actors
+Relationships
+
+Class Diagrams:
+Association
+Dependencies
+Specialization
+Aggregation
+
+ERD;
+Cardinalities
+
+Tools/Case:
+QT
+Git
+IDE
+Versioning
+UML
+
+CMM:?????
