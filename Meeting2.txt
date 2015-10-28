@@ -1,0 +1,13 @@
+2:00
+Input: Missing Core Driving Function
+Be specific on units (mph, 0-100)
+User must start the car in order to drive car
+Other functions can be used when the car is off
+Use cases need to be more specific
+Use same terminology through out
+Delete use case scenario bluetooth volume
+Add table of contents
+Add Page numbers
+STD must show relationships. No ambiguities 
+Contribution table: Specific things you did and learned
+Use IEE Std. 1998
