@@ -12,10 +12,10 @@ MAKEFILE      = Makefile
 
 CC            = /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang
 CXX           = /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++
-DEFINES       = -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_CORE_LIB
+DEFINES       = -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_SQL_LIB -DQT_CORE_LIB
 CFLAGS        = -pipe -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.11.sdk -mmacosx-version-min=10.7 -Wall -W -fPIC $(DEFINES)
 CXXFLAGS      = -pipe -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.11.sdk -mmacosx-version-min=10.7 -Wall -W -fPIC $(DEFINES)
-INCPATH       = -I../LoginWindow -I. -I../../../../Qt/5.5/clang_64/lib/QtWidgets.framework/Headers -I../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers -I../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.11.sdk/System/Library/Frameworks/OpenGL.framework/Headers -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.11.sdk/System/Library/Frameworks/AGL.framework/Headers -I. -I../../../../Qt/5.5/clang_64/mkspecs/macx-clang -F/Users/alexmcintosh/Qt/5.5/clang_64/lib
+INCPATH       = -I../LoginWindow -I. -I../../../../Qt/5.5/clang_64/lib/QtWidgets.framework/Headers -I../../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers -I../../../../Qt/5.5/clang_64/lib/QtSql.framework/Headers -I../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.11.sdk/System/Library/Frameworks/OpenGL.framework/Headers -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.11.sdk/System/Library/Frameworks/AGL.framework/Headers -I. -I../../../../Qt/5.5/clang_64/mkspecs/macx-clang -F/Users/alexmcintosh/Qt/5.5/clang_64/lib
 QMAKE         = /Users/alexmcintosh/Qt/5.5/clang_64/bin/qmake
 DEL_FILE      = rm -f
 CHK_DIR_EXISTS= test -d
@@ -36,7 +36,7 @@ DISTNAME      = LoginWindow1.0.0
 DISTDIR = /Users/alexmcintosh/Team15CSE360/Code/LoginWindow/build-LoginWindow-Desktop_Qt_5_5_0_clang_64bit-Debug/.tmp/LoginWindow1.0.0
 LINK          = /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++
 LFLAGS        = -headerpad_max_install_names -Wl,-syslibroot,/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.11.sdk -mmacosx-version-min=10.7 -Wl,-rpath,/Users/alexmcintosh/Qt/5.5/clang_64/lib
-LIBS          = $(SUBLIBS) -F/Users/alexmcintosh/Qt/5.5/clang_64/lib -framework QtWidgets -framework QtGui -framework QtCore -framework DiskArbitration -framework IOKit -framework OpenGL -framework AGL 
+LIBS          = $(SUBLIBS) -F/Users/alexmcintosh/Qt/5.5/clang_64/lib -framework QtWidgets -framework QtGui -framework QtCore -framework DiskArbitration -framework IOKit -framework QtSql -framework OpenGL -framework AGL 
 AR            = /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ar cq
 RANLIB        = /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ranlib -s
 SED           = sed
@@ -170,6 +170,7 @@ DIST          = ../../../../Qt/5.5/clang_64/mkspecs/features/spec_pre.prf \
 		../../../../Qt/5.5/clang_64/mkspecs/features/qt_config.prf \
 		../../../../Qt/5.5/clang_64/mkspecs/macx-clang/qmake.conf \
 		../../../../Qt/5.5/clang_64/mkspecs/features/spec_post.prf \
+		../LoginWindow/.qmake.stash \
 		../../../../Qt/5.5/clang_64/mkspecs/features/exclusive_builds.prf \
 		../../../../Qt/5.5/clang_64/mkspecs/features/default_pre.prf \
 		../../../../Qt/5.5/clang_64/mkspecs/features/mac/default_pre.prf \
@@ -350,6 +351,7 @@ Makefile: ../LoginWindow/LoginWindow.pro ../../../../Qt/5.5/clang_64/mkspecs/mac
 		../../../../Qt/5.5/clang_64/mkspecs/features/qt_config.prf \
 		../../../../Qt/5.5/clang_64/mkspecs/macx-clang/qmake.conf \
 		../../../../Qt/5.5/clang_64/mkspecs/features/spec_post.prf \
+		.qmake.stash \
 		../../../../Qt/5.5/clang_64/mkspecs/features/exclusive_builds.prf \
 		../../../../Qt/5.5/clang_64/mkspecs/features/default_pre.prf \
 		../../../../Qt/5.5/clang_64/mkspecs/features/mac/default_pre.prf \
@@ -373,6 +375,7 @@ Makefile: ../LoginWindow/LoginWindow.pro ../../../../Qt/5.5/clang_64/mkspecs/mac
 		../LoginWindow/LoginWindow.pro \
 		/Users/alexmcintosh/Qt/5.5/clang_64/lib/QtWidgets.framework/QtWidgets.prl \
 		/Users/alexmcintosh/Qt/5.5/clang_64/lib/QtGui.framework/QtGui.prl \
+		/Users/alexmcintosh/Qt/5.5/clang_64/lib/QtSql.framework/QtSql.prl \
 		/Users/alexmcintosh/Qt/5.5/clang_64/lib/QtCore.framework/QtCore.prl
 	$(QMAKE) -spec macx-clang CONFIG+=debug CONFIG+=x86_64 -o Makefile ../LoginWindow/LoginWindow.pro
 ../../../../Qt/5.5/clang_64/mkspecs/features/spec_pre.prf:
@@ -492,6 +495,7 @@ Makefile: ../LoginWindow/LoginWindow.pro ../../../../Qt/5.5/clang_64/mkspecs/mac
 ../../../../Qt/5.5/clang_64/mkspecs/features/qt_config.prf:
 ../../../../Qt/5.5/clang_64/mkspecs/macx-clang/qmake.conf:
 ../../../../Qt/5.5/clang_64/mkspecs/features/spec_post.prf:
+.qmake.stash:
 ../../../../Qt/5.5/clang_64/mkspecs/features/exclusive_builds.prf:
 ../../../../Qt/5.5/clang_64/mkspecs/features/default_pre.prf:
 ../../../../Qt/5.5/clang_64/mkspecs/features/mac/default_pre.prf:
@@ -515,6 +519,7 @@ Makefile: ../LoginWindow/LoginWindow.pro ../../../../Qt/5.5/clang_64/mkspecs/mac
 ../LoginWindow/LoginWindow.pro:
 /Users/alexmcintosh/Qt/5.5/clang_64/lib/QtWidgets.framework/QtWidgets.prl:
 /Users/alexmcintosh/Qt/5.5/clang_64/lib/QtGui.framework/QtGui.prl:
+/Users/alexmcintosh/Qt/5.5/clang_64/lib/QtSql.framework/QtSql.prl:
 /Users/alexmcintosh/Qt/5.5/clang_64/lib/QtCore.framework/QtCore.prl:
 qmake: FORCE
 	@$(QMAKE) -spec macx-clang CONFIG+=debug CONFIG+=x86_64 -o Makefile ../LoginWindow/LoginWindow.pro
@@ -578,8 +583,10 @@ compiler_moc_header_clean:
 	-$(DEL_FILE) moc_login.cpp
 moc_login.cpp: ../../../../Qt/5.5/clang_64/lib/QtWidgets.framework/Headers/QMainWindow \
 		../../../../Qt/5.5/clang_64/lib/QtWidgets.framework/Headers/qmainwindow.h \
+		../../../../Qt/5.5/clang_64/lib/QtSql.framework/Headers/QSqlDatabase \
+		../../../../Qt/5.5/clang_64/lib/QtSql.framework/Headers/qsqldatabase.h \
 		../LoginWindow/login.h
-	/Users/alexmcintosh/Qt/5.5/clang_64/bin/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -I/Users/alexmcintosh/Qt/5.5/clang_64/mkspecs/macx-clang -I/Users/alexmcintosh/Team15CSE360/Code/LoginWindow/LoginWindow -I/Users/alexmcintosh/Qt/5.5/clang_64/lib/QtWidgets.framework/Headers -I/Users/alexmcintosh/Qt/5.5/clang_64/lib/QtGui.framework/Headers -I/Users/alexmcintosh/Qt/5.5/clang_64/lib/QtCore.framework/Headers -I. -F/Users/alexmcintosh/Qt/5.5/clang_64/lib ../LoginWindow/login.h -o moc_login.cpp
+	/Users/alexmcintosh/Qt/5.5/clang_64/bin/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -I/Users/alexmcintosh/Qt/5.5/clang_64/mkspecs/macx-clang -I/Users/alexmcintosh/Team15CSE360/Code/LoginWindow/LoginWindow -I/Users/alexmcintosh/Qt/5.5/clang_64/lib/QtWidgets.framework/Headers -I/Users/alexmcintosh/Qt/5.5/clang_64/lib/QtGui.framework/Headers -I/Users/alexmcintosh/Qt/5.5/clang_64/lib/QtSql.framework/Headers -I/Users/alexmcintosh/Qt/5.5/clang_64/lib/QtCore.framework/Headers -I. -F/Users/alexmcintosh/Qt/5.5/clang_64/lib ../LoginWindow/login.h -o moc_login.cpp
 
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
@@ -604,14 +611,50 @@ compiler_clean: compiler_moc_header_clean compiler_uic_clean
 main.o: ../LoginWindow/main.cpp ../LoginWindow/login.h \
 		../../../../Qt/5.5/clang_64/lib/QtWidgets.framework/Headers/QMainWindow \
 		../../../../Qt/5.5/clang_64/lib/QtWidgets.framework/Headers/qmainwindow.h \
+		../../../../Qt/5.5/clang_64/lib/QtSql.framework/Headers/QSqlDatabase \
+		../../../../Qt/5.5/clang_64/lib/QtSql.framework/Headers/qsqldatabase.h \
 		../../../../Qt/5.5/clang_64/lib/QtWidgets.framework/Headers/QApplication \
-		../../../../Qt/5.5/clang_64/lib/QtWidgets.framework/Headers/qapplication.h
+		../../../../Qt/5.5/clang_64/lib/QtWidgets.framework/Headers/qapplication.h \
+		../../../../Qt/5.5/clang_64/lib/QtSql.framework/Headers/QtSql \
+		../../../../Qt/5.5/clang_64/lib/QtSql.framework/Headers/qsql.h \
+		../../../../Qt/5.5/clang_64/lib/QtSql.framework/Headers/qsqldriver.h \
+		../../../../Qt/5.5/clang_64/lib/QtSql.framework/Headers/qsqldriverplugin.h \
+		../../../../Qt/5.5/clang_64/lib/QtSql.framework/Headers/qsqlerror.h \
+		../../../../Qt/5.5/clang_64/lib/QtSql.framework/Headers/qsqlfield.h \
+		../../../../Qt/5.5/clang_64/lib/QtSql.framework/Headers/qsqlindex.h \
+		../../../../Qt/5.5/clang_64/lib/QtSql.framework/Headers/qsqlquery.h \
+		../../../../Qt/5.5/clang_64/lib/QtSql.framework/Headers/qsqlrecord.h \
+		../../../../Qt/5.5/clang_64/lib/QtSql.framework/Headers/qsqlresult.h \
+		../../../../Qt/5.5/clang_64/lib/QtSql.framework/Headers/qsqlquerymodel.h \
+		../../../../Qt/5.5/clang_64/lib/QtSql.framework/Headers/qsqlrelationaldelegate.h \
+		../../../../Qt/5.5/clang_64/lib/QtSql.framework/Headers/qsqlrelationaltablemodel.h \
+		../../../../Qt/5.5/clang_64/lib/QtSql.framework/Headers/qsqltablemodel.h \
+		../../../../Qt/5.5/clang_64/lib/QtSql.framework/Headers/qtsqlversion.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/QtDebug \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qdebug.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../LoginWindow/main.cpp
 
 login.o: ../LoginWindow/login.cpp ../LoginWindow/login.h \
 		../../../../Qt/5.5/clang_64/lib/QtWidgets.framework/Headers/QMainWindow \
 		../../../../Qt/5.5/clang_64/lib/QtWidgets.framework/Headers/qmainwindow.h \
-		ui_login.h
+		../../../../Qt/5.5/clang_64/lib/QtSql.framework/Headers/QSqlDatabase \
+		../../../../Qt/5.5/clang_64/lib/QtSql.framework/Headers/qsqldatabase.h \
+		ui_login.h \
+		../../../../Qt/5.5/clang_64/lib/QtSql.framework/Headers/QtSql \
+		../../../../Qt/5.5/clang_64/lib/QtSql.framework/Headers/qsql.h \
+		../../../../Qt/5.5/clang_64/lib/QtSql.framework/Headers/qsqldriver.h \
+		../../../../Qt/5.5/clang_64/lib/QtSql.framework/Headers/qsqldriverplugin.h \
+		../../../../Qt/5.5/clang_64/lib/QtSql.framework/Headers/qsqlerror.h \
+		../../../../Qt/5.5/clang_64/lib/QtSql.framework/Headers/qsqlfield.h \
+		../../../../Qt/5.5/clang_64/lib/QtSql.framework/Headers/qsqlindex.h \
+		../../../../Qt/5.5/clang_64/lib/QtSql.framework/Headers/qsqlquery.h \
+		../../../../Qt/5.5/clang_64/lib/QtSql.framework/Headers/qsqlrecord.h \
+		../../../../Qt/5.5/clang_64/lib/QtSql.framework/Headers/qsqlresult.h \
+		../../../../Qt/5.5/clang_64/lib/QtSql.framework/Headers/qsqlquerymodel.h \
+		../../../../Qt/5.5/clang_64/lib/QtSql.framework/Headers/qsqlrelationaldelegate.h \
+		../../../../Qt/5.5/clang_64/lib/QtSql.framework/Headers/qsqlrelationaltablemodel.h \
+		../../../../Qt/5.5/clang_64/lib/QtSql.framework/Headers/qsqltablemodel.h \
+		../../../../Qt/5.5/clang_64/lib/QtSql.framework/Headers/qtsqlversion.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o login.o ../LoginWindow/login.cpp
 
 moc_login.o: moc_login.cpp 

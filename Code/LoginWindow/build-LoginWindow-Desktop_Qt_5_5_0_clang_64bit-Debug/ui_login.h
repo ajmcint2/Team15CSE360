@@ -34,6 +34,7 @@ public:
     QLineEdit *lineEdit;
     QLineEdit *lineEdit_2;
     QPushButton *pushButton;
+    QLabel *status;
     QMenuBar *menuBar;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
@@ -70,6 +71,9 @@ public:
         pushButton->setStyleSheet(QLatin1String("background-color: rgb(0, 178, 255);\n"
 "font: 25 36pt \"Avenir\";\n"
 "border-radius: 15px;"));
+        status = new QLabel(centralWidget);
+        status->setObjectName(QStringLiteral("status"));
+        status->setGeometry(QRect(150, 40, 59, 16));
         Login->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(Login);
         menuBar->setObjectName(QStringLiteral("menuBar"));
@@ -93,6 +97,7 @@ public:
         label_username->setText(QApplication::translate("Login", "Username", 0));
         label_password->setText(QApplication::translate("Login", "Password", 0));
         pushButton->setText(QApplication::translate("Login", "login", 0));
+        status->setText(QString());
     } // retranslateUi
 
 };
