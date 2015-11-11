@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>400</width>
-    <height>300</height>
+    <height>288</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -15,7 +15,7 @@
   </property>
   <widget class="QWidget" name="centralWidget">
    <property name="styleSheet">
-    <string notr="true">background: rgb(35, 39, 45);</string>
+    <string notr="true">background: rgb(37, 37, 37);</string>
    </property>
    <widget class="QLabel" name="label_username">
     <property name="geometry">
@@ -61,7 +61,9 @@ font: 25 18pt &quot;Avenir&quot;;</string>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background: white;</string>
+     <string notr="true">background: white;
+border-radius: 20px;
+</string>
     </property>
    </widget>
    <widget class="QLineEdit" name="lineEdit_2">
@@ -74,22 +76,34 @@ font: 25 18pt &quot;Avenir&quot;;</string>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background: white;</string>
+     <string notr="true">background: white;
+border-radius: 20px;
+</string>
     </property>
    </widget>
    <widget class="QPushButton" name="pushButton">
     <property name="geometry">
      <rect>
-      <x>100</x>
-      <y>150</y>
-      <width>211</width>
-      <height>61</height>
+      <x>20</x>
+      <y>160</y>
+      <width>361</width>
+      <height>71</height>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(0, 178, 255);
+     <string notr="true">#pushButton{
+background-color: rgb(0, 70, 122);
+color: white;
 font: 25 36pt &quot;Avenir&quot;;
-border-radius: 15px;</string>
+border-radius: 15px;
+}
+
+#pushButton:pressed{
+background-color: rgb(0, 58, 104);
+color: white;
+font: 25 36pt &quot;Avenir&quot;;
+border-radius: 15px;
+}</string>
     </property>
     <property name="text">
      <string>login</string>
@@ -98,10 +112,10 @@ border-radius: 15px;</string>
    <widget class="QLabel" name="status">
     <property name="geometry">
      <rect>
-      <x>150</x>
-      <y>40</y>
-      <width>59</width>
-      <height>16</height>
+      <x>50</x>
+      <y>30</y>
+      <width>291</width>
+      <height>31</height>
      </rect>
     </property>
     <property name="text">

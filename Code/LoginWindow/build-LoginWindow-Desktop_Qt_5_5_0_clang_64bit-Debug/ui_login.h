@@ -43,10 +43,10 @@ public:
     {
         if (Login->objectName().isEmpty())
             Login->setObjectName(QStringLiteral("Login"));
-        Login->resize(400, 300);
+        Login->resize(400, 288);
         centralWidget = new QWidget(Login);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
-        centralWidget->setStyleSheet(QStringLiteral("background: rgb(35, 39, 45);"));
+        centralWidget->setStyleSheet(QStringLiteral("background: rgb(37, 37, 37);"));
         label_username = new QLabel(centralWidget);
         label_username->setObjectName(QStringLiteral("label_username"));
         label_username->setGeometry(QRect(100, 80, 81, 25));
@@ -60,20 +60,34 @@ public:
         lineEdit = new QLineEdit(centralWidget);
         lineEdit->setObjectName(QStringLiteral("lineEdit"));
         lineEdit->setGeometry(QRect(190, 80, 122, 21));
-        lineEdit->setStyleSheet(QStringLiteral("background: white;"));
+        lineEdit->setStyleSheet(QLatin1String("background: white;\n"
+"border-radius: 20px;\n"
+""));
         lineEdit_2 = new QLineEdit(centralWidget);
         lineEdit_2->setObjectName(QStringLiteral("lineEdit_2"));
         lineEdit_2->setGeometry(QRect(190, 110, 121, 21));
-        lineEdit_2->setStyleSheet(QStringLiteral("background: white;"));
+        lineEdit_2->setStyleSheet(QLatin1String("background: white;\n"
+"border-radius: 20px;\n"
+""));
         pushButton = new QPushButton(centralWidget);
         pushButton->setObjectName(QStringLiteral("pushButton"));
-        pushButton->setGeometry(QRect(100, 150, 211, 61));
-        pushButton->setStyleSheet(QLatin1String("background-color: rgb(0, 178, 255);\n"
+        pushButton->setGeometry(QRect(20, 160, 361, 71));
+        pushButton->setStyleSheet(QLatin1String("#pushButton{\n"
+"background-color: rgb(0, 70, 122);\n"
+"color: white;\n"
 "font: 25 36pt \"Avenir\";\n"
-"border-radius: 15px;"));
+"border-radius: 15px;\n"
+"}\n"
+"\n"
+"#pushButton:pressed{\n"
+"background-color: rgb(0, 58, 104);\n"
+"color: white;\n"
+"font: 25 36pt \"Avenir\";\n"
+"border-radius: 15px;\n"
+"}"));
         status = new QLabel(centralWidget);
         status->setObjectName(QStringLiteral("status"));
-        status->setGeometry(QRect(150, 40, 59, 16));
+        status->setGeometry(QRect(50, 30, 291, 31));
         Login->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(Login);
         menuBar->setObjectName(QStringLiteral("menuBar"));

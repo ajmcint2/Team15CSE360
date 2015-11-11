@@ -11,12 +11,12 @@ Login::Login(QWidget *parent) :
     ui->setupUi(this);
 
     db = QSqlDatabase::addDatabase("QSQLITE");
-    db.setDatabaseName("/Users/alexmcintosh/Team15CSE360/Code/Database/AOICS.sqlite");
+    db.setDatabaseName("/Users/alexmcintosh/Team15CSE360/Code/Database/AIOCS.sqlite");
     if(db.open()){
-        ui->status->setText("Connected");
+        ui->status->setText("[+] Connected");
     }
     else{
-        ui->status->setText("Error establishing connection");
+        ui->status->setText("[+] Error establishing connection");
     }
 }
 
@@ -38,17 +38,20 @@ void Login::on_pushButton_clicked()
     }
 
     QSqlQuery qry;
-    if (qry.exec("select * from users where username='" + username +
-                 "' and password='" + password + "'")){
+    if (qry.exec("SELECT * FROM users WHERE username ='" + username +
+                 "' AND password ='" + password + "'")){
         int count= 0;
         while (qry.next()){
-            count ++;
+            count++;
         }
         if (count > 0){
-            ui->label_password->setText("Correct");
+            ui->status->setText("Correct Login");
         }
         else {
-            ui->label_password->setText("Nope");
+            ui->status->setText("Incorrect Login");
         }
+    }
+    else {
+         ui->status->setText("[+] Error establishing connection");
     }
 }
