@@ -49,10 +49,14 @@ OBJECTS_DIR   = ./
 ####### Files
 
 SOURCES       = ../LoginWindow/main.cpp \
-		../LoginWindow/login.cpp moc_login.cpp
+		../LoginWindow/login.cpp \
+		../LoginWindow/mainwindow.cpp moc_login.cpp \
+		moc_mainwindow.cpp
 OBJECTS       = main.o \
 		login.o \
-		moc_login.o
+		mainwindow.o \
+		moc_login.o \
+		moc_mainwindow.o
 DIST          = ../../../../Qt/5.5/clang_64/mkspecs/features/spec_pre.prf \
 		../../../../Qt/5.5/clang_64/mkspecs/qdevice.pri \
 		../../../../Qt/5.5/clang_64/mkspecs/features/device_config.prf \
@@ -191,8 +195,10 @@ DIST          = ../../../../Qt/5.5/clang_64/mkspecs/features/spec_pre.prf \
 		../../../../Qt/5.5/clang_64/mkspecs/features/exceptions.prf \
 		../../../../Qt/5.5/clang_64/mkspecs/features/yacc.prf \
 		../../../../Qt/5.5/clang_64/mkspecs/features/lex.prf \
-		../LoginWindow/LoginWindow.pro ../LoginWindow/login.h ../LoginWindow/main.cpp \
-		../LoginWindow/login.cpp
+		../LoginWindow/LoginWindow.pro ../LoginWindow/login.h \
+		../LoginWindow/mainwindow.h ../LoginWindow/main.cpp \
+		../LoginWindow/login.cpp \
+		../LoginWindow/mainwindow.cpp
 QMAKE_TARGET  = LoginWindow
 DESTDIR       = #avoid trailing-slash linebreak
 TARGET        = LoginWindow.app/Contents/MacOS/LoginWindow
@@ -230,7 +236,7 @@ first: all
 
 ####### Build rules
 
-$(TARGET): ui_login.h $(OBJECTS)  
+$(TARGET): ui_login.h ui_mainwindow.h $(OBJECTS)  
 	@test -d LoginWindow.app/Contents/MacOS/ || mkdir -p LoginWindow.app/Contents/MacOS/
 	$(LINK) $(LFLAGS) -o $(TARGET) $(OBJECTS) $(OBJCOMP) $(LIBS)
 
@@ -550,9 +556,9 @@ dist: distdir FORCE
 distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
-	$(COPY_FILE) --parents ../LoginWindow/login.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../LoginWindow/main.cpp ../LoginWindow/login.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../LoginWindow/login.ui $(DISTDIR)/
+	$(COPY_FILE) --parents ../LoginWindow/login.h ../LoginWindow/mainwindow.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../LoginWindow/main.cpp ../LoginWindow/login.cpp ../LoginWindow/mainwindow.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../LoginWindow/login.ui ../LoginWindow/mainwindow.ui $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -578,9 +584,9 @@ compiler_objective_c_make_all:
 compiler_objective_c_clean:
 compiler_rcc_make_all:
 compiler_rcc_clean:
-compiler_moc_header_make_all: moc_login.cpp
+compiler_moc_header_make_all: moc_login.cpp moc_mainwindow.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_login.cpp
+	-$(DEL_FILE) moc_login.cpp moc_mainwindow.cpp
 moc_login.cpp: ../../../../Qt/5.5/clang_64/lib/QtWidgets.framework/Headers/QMainWindow \
 		../../../../Qt/5.5/clang_64/lib/QtWidgets.framework/Headers/qmainwindow.h \
 		../../../../Qt/5.5/clang_64/lib/QtSql.framework/Headers/QSqlDatabase \
@@ -602,16 +608,27 @@ moc_login.cpp: ../../../../Qt/5.5/clang_64/lib/QtWidgets.framework/Headers/QMain
 		../../../../Qt/5.5/clang_64/lib/QtSql.framework/Headers/qtsqlversion.h \
 		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/QtDebug \
 		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qdebug.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/QFileInfo \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qfileinfo.h \
+		../LoginWindow/mainwindow.h \
 		../LoginWindow/login.h
 	/Users/alexmcintosh/Qt/5.5/clang_64/bin/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -I/Users/alexmcintosh/Qt/5.5/clang_64/mkspecs/macx-clang -I/Users/alexmcintosh/Team15CSE360/Code/LoginWindow/LoginWindow -I/Users/alexmcintosh/Qt/5.5/clang_64/lib/QtWidgets.framework/Headers -I/Users/alexmcintosh/Qt/5.5/clang_64/lib/QtGui.framework/Headers -I/Users/alexmcintosh/Qt/5.5/clang_64/lib/QtSql.framework/Headers -I/Users/alexmcintosh/Qt/5.5/clang_64/lib/QtCore.framework/Headers -I. -F/Users/alexmcintosh/Qt/5.5/clang_64/lib ../LoginWindow/login.h -o moc_login.cpp
 
+moc_mainwindow.cpp: ../../../../Qt/5.5/clang_64/lib/QtWidgets.framework/Headers/QMainWindow \
+		../../../../Qt/5.5/clang_64/lib/QtWidgets.framework/Headers/qmainwindow.h \
+		../LoginWindow/mainwindow.h
+	/Users/alexmcintosh/Qt/5.5/clang_64/bin/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -I/Users/alexmcintosh/Qt/5.5/clang_64/mkspecs/macx-clang -I/Users/alexmcintosh/Team15CSE360/Code/LoginWindow/LoginWindow -I/Users/alexmcintosh/Qt/5.5/clang_64/lib/QtWidgets.framework/Headers -I/Users/alexmcintosh/Qt/5.5/clang_64/lib/QtGui.framework/Headers -I/Users/alexmcintosh/Qt/5.5/clang_64/lib/QtSql.framework/Headers -I/Users/alexmcintosh/Qt/5.5/clang_64/lib/QtCore.framework/Headers -I. -F/Users/alexmcintosh/Qt/5.5/clang_64/lib ../LoginWindow/mainwindow.h -o moc_mainwindow.cpp
+
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
-compiler_uic_make_all: ui_login.h
+compiler_uic_make_all: ui_login.h ui_mainwindow.h
 compiler_uic_clean:
-	-$(DEL_FILE) ui_login.h
+	-$(DEL_FILE) ui_login.h ui_mainwindow.h
 ui_login.h: ../LoginWindow/login.ui
 	/Users/alexmcintosh/Qt/5.5/clang_64/bin/uic ../LoginWindow/login.ui -o ui_login.h
+
+ui_mainwindow.h: ../LoginWindow/mainwindow.ui
+	/Users/alexmcintosh/Qt/5.5/clang_64/bin/uic ../LoginWindow/mainwindow.ui -o ui_mainwindow.h
 
 compiler_rez_source_make_all:
 compiler_rez_source_clean:
@@ -647,6 +664,9 @@ main.o: ../LoginWindow/main.cpp ../LoginWindow/login.h \
 		../../../../Qt/5.5/clang_64/lib/QtSql.framework/Headers/qtsqlversion.h \
 		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/QtDebug \
 		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qdebug.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/QFileInfo \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qfileinfo.h \
+		../LoginWindow/mainwindow.h \
 		../../../../Qt/5.5/clang_64/lib/QtWidgets.framework/Headers/QApplication \
 		../../../../Qt/5.5/clang_64/lib/QtWidgets.framework/Headers/qapplication.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../LoginWindow/main.cpp
@@ -673,11 +693,23 @@ login.o: ../LoginWindow/login.cpp ../LoginWindow/login.h \
 		../../../../Qt/5.5/clang_64/lib/QtSql.framework/Headers/qtsqlversion.h \
 		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/QtDebug \
 		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qdebug.h \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/QFileInfo \
+		../../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qfileinfo.h \
+		../LoginWindow/mainwindow.h \
 		ui_login.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o login.o ../LoginWindow/login.cpp
 
+mainwindow.o: ../LoginWindow/mainwindow.cpp ../LoginWindow/mainwindow.h \
+		../../../../Qt/5.5/clang_64/lib/QtWidgets.framework/Headers/QMainWindow \
+		../../../../Qt/5.5/clang_64/lib/QtWidgets.framework/Headers/qmainwindow.h \
+		ui_mainwindow.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o ../LoginWindow/mainwindow.cpp
+
 moc_login.o: moc_login.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_login.o moc_login.cpp
+
+moc_mainwindow.o: moc_mainwindow.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_mainwindow.o moc_mainwindow.cpp
 
 ####### Install
 

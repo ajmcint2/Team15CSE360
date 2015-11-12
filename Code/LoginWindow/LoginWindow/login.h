@@ -5,6 +5,8 @@
 #include <QSqlDatabase>
 #include <QtSql>
 #include <QtDebug>
+#include <QFileInfo>
+#include "mainwindow.h"
 
 namespace Ui {
 class Login;
@@ -20,6 +22,12 @@ public:
 
 private slots:
     void on_pushButton_clicked();
+
+public slots:
+      void openMainWindow();
+
+private:
+    MainWindow *newMainWindow;
 
 private:
     Ui::Login *ui;

@@ -1,4 +1,5 @@
 #include "login.h"
+#include "mainwindow.h"
 #include "ui_login.h"
 #include <QtSql>
 #include <QSqlDatabase>
@@ -9,7 +10,7 @@ Login::Login(QWidget *parent) :
     ui(new Ui::Login)
 {
     ui->setupUi(this);
-
+    connect(ui->pushButton, SIGNAL(click()), this, SLOT(openMainWindow()));
     db = QSqlDatabase::addDatabase("QSQLITE");
     db.setDatabaseName("/Users/alexmcintosh/Team15CSE360/Code/Database/AIOCS.sqlite");
     if(db.open()){
@@ -23,8 +24,15 @@ Login::Login(QWidget *parent) :
 Login::~Login()
 {
     delete ui;
-    db.close();
 }
+
+void Login::openMainWindow()
+{
+    newMainWindow = new MainWindow();
+
+    newMainWindow->show();
+}
+
 
 void Login::on_pushButton_clicked()
 {
@@ -46,6 +54,8 @@ void Login::on_pushButton_clicked()
         }
         if (count > 0){
             ui->status->setText("Correct Login");
+            this->hide();
+            openMainWindow();
         }
         else {
             ui->status->setText("Incorrect Login");
