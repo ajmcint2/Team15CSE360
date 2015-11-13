@@ -16,6 +16,7 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
     int speed = 0;
+    int fuel = 50;
 
 private slots:
     void on_pushButton_clicked();
@@ -23,6 +24,8 @@ private slots:
     void on_accel_clicked();
 
     void on_decel_clicked();
+
+    void on_refillButton_clicked();
 
 private:
     Ui::MainWindow *ui;

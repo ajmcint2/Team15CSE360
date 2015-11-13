@@ -146,7 +146,7 @@ font: 25 110pt &quot;Avenir&quot;;;
 font-style: italic;</string>
       </property>
       <property name="text">
-       <string>100</string>
+       <string>50</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>

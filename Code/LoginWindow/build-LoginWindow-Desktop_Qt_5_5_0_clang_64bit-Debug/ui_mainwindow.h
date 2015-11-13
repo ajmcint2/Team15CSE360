@@ -206,7 +206,7 @@ public:
         speed_label->setText(QApplication::translate("MainWindow", "SPEED", 0));
         fuel_label->setText(QApplication::translate("MainWindow", "FUEL", 0));
         setspeed_label->setText(QApplication::translate("MainWindow", "0", 0));
-        setfuel_label->setText(QApplication::translate("MainWindow", "100", 0));
+        setfuel_label->setText(QApplication::translate("MainWindow", "50", 0));
         pushButton->setText(QApplication::translate("MainWindow", "START", 0));
         accel->setText(QApplication::translate("MainWindow", "+", 0));
         decel->setText(QApplication::translate("MainWindow", "-", 0));
