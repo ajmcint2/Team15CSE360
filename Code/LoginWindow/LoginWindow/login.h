@@ -3,9 +3,9 @@
 
 #include <QMainWindow>
 #include <QSqlDatabase>
-#include <QtSql>
 #include <QtDebug>
 #include <QFileInfo>
+#include <QSql>
 #include "mainwindow.h"
 
 namespace Ui {
@@ -27,11 +27,9 @@ public slots:
       void openMainWindow();
 
 private:
-    MainWindow *newMainWindow;
-
-private:
     Ui::Login *ui;
     QSqlDatabase db;
+    MainWindow *newMainWindow;
 };
 
 #endif // LOGIN_H

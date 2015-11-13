@@ -15,7 +15,7 @@
   </property>
   <widget class="QWidget" name="centralWidget">
    <property name="styleSheet">
-    <string notr="true">background: rgb(37, 37, 37);</string>
+    <string notr="true">background: rgb(25, 25, 25);</string>
    </property>
    <widget class="QLabel" name="label_username">
     <property name="geometry">
@@ -27,7 +27,7 @@
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">color: rgb(255, 255, 255);
+     <string notr="true">color: white;
 font: 25 18pt &quot;Avenir&quot;;</string>
     </property>
     <property name="text">
@@ -109,17 +109,42 @@ border-radius: 15px;
      <string>login</string>
     </property>
    </widget>
+   <widget class="QLabel" name="welcome_label">
+    <property name="geometry">
+     <rect>
+      <x>150</x>
+      <y>20</y>
+      <width>111</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: white;
+font: 25 25pt &quot;Avenir&quot;;</string>
+    </property>
+    <property name="text">
+     <string>Welcome</string>
+    </property>
+   </widget>
    <widget class="QLabel" name="status">
     <property name="geometry">
      <rect>
-      <x>50</x>
-      <y>30</y>
-      <width>291</width>
-      <height>31</height>
+      <x>90</x>
+      <y>40</y>
+      <width>221</width>
+      <height>20</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: white;
+background-color: transparent;
+font: 25 12pt &quot;Avenir&quot;;</string>
     </property>
     <property name="text">
      <string/>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
     </property>
    </widget>
   </widget>
