@@ -10,6 +10,9 @@ MainWindow::MainWindow(QWidget *parent) :
     time->setHMS(0,0,0,0);
     timer = new QTimer(this);
     connect(timer, SIGNAL(timeout()), this, SLOT(on_call_clicked()));
+    ui->vol_slider->setValue(50);
+    ui->mic_slider->setValue(50);
+    ui->Controller->setCurrentIndex(0);
 }
 
 MainWindow::~MainWindow()

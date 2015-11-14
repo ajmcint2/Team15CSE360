@@ -98,45 +98,45 @@ public:
 ""));
         Speedometer = new QTextBrowser(tab);
         Speedometer->setObjectName(QStringLiteral("Speedometer"));
-        Speedometer->setGeometry(QRect(30, 20, 191, 111));
+        Speedometer->setGeometry(QRect(30, 40, 191, 111));
         Speedometer->setStyleSheet(QLatin1String("border-radius: 15px;\n"
 ""));
         FuelGauge = new QTextBrowser(tab);
         FuelGauge->setObjectName(QStringLiteral("FuelGauge"));
-        FuelGauge->setGeometry(QRect(30, 170, 191, 111));
+        FuelGauge->setGeometry(QRect(30, 180, 191, 111));
         FuelGauge->setStyleSheet(QLatin1String("border-radius: 15px;\n"
 ""));
         speed_label = new QLabel(tab);
         speed_label->setObjectName(QStringLiteral("speed_label"));
-        speed_label->setGeometry(QRect(30, 130, 59, 16));
+        speed_label->setGeometry(QRect(30, 150, 59, 16));
         speed_label->setStyleSheet(QLatin1String("background-color: transparent;\n"
 "color: rgb(255, 255, 255);\n"
 "font: \"Avenir\";\n"
 ""));
         fuel_label = new QLabel(tab);
         fuel_label->setObjectName(QStringLiteral("fuel_label"));
-        fuel_label->setGeometry(QRect(30, 280, 59, 16));
+        fuel_label->setGeometry(QRect(30, 290, 59, 16));
         fuel_label->setStyleSheet(QLatin1String("background-color: transparent;\n"
 "color: rgb(255, 255, 255);\n"
 "font: \"Avenir\";\n"
 ""));
         setspeed_label = new QLabel(tab);
         setspeed_label->setObjectName(QStringLiteral("setspeed_label"));
-        setspeed_label->setGeometry(QRect(30, 40, 181, 91));
+        setspeed_label->setGeometry(QRect(30, 60, 181, 91));
         setspeed_label->setStyleSheet(QLatin1String("color: white;\n"
 "font: 25 110pt \"Avenir\";;\n"
 "font-style: italic;"));
         setspeed_label->setAlignment(Qt::AlignCenter);
         setfuel_label = new QLabel(tab);
         setfuel_label->setObjectName(QStringLiteral("setfuel_label"));
-        setfuel_label->setGeometry(QRect(30, 190, 181, 91));
+        setfuel_label->setGeometry(QRect(30, 200, 181, 91));
         setfuel_label->setStyleSheet(QLatin1String("color: white;\n"
 "font: 25 110pt \"Avenir\";;\n"
 "font-style: italic;"));
         setfuel_label->setAlignment(Qt::AlignCenter);
         pushButton = new QPushButton(tab);
         pushButton->setObjectName(QStringLiteral("pushButton"));
-        pushButton->setGeometry(QRect(310, 40, 321, 71));
+        pushButton->setGeometry(QRect(360, 40, 321, 71));
         pushButton->setStyleSheet(QLatin1String("#pushButton{\n"
 "background-color: rgb(0, 70, 122);\n"
 "color: white;\n"
@@ -152,7 +152,7 @@ public:
 "}"));
         accel = new QPushButton(tab);
         accel->setObjectName(QStringLiteral("accel"));
-        accel->setGeometry(QRect(340, 130, 121, 171));
+        accel->setGeometry(QRect(360, 130, 151, 171));
         accel->setStyleSheet(QLatin1String("#accel{\n"
 "background-color: rgb(37, 37, 37);\n"
 "color: white;\n"
@@ -168,7 +168,7 @@ public:
 "}"));
         decel = new QPushButton(tab);
         decel->setObjectName(QStringLiteral("decel"));
-        decel->setGeometry(QRect(480, 130, 121, 171));
+        decel->setGeometry(QRect(530, 130, 151, 171));
         decel->setStyleSheet(QLatin1String("#decel{\n"
 "background-color: rgb(37, 37, 37);\n"
 "color: white;\n"
@@ -184,7 +184,7 @@ public:
 "}"));
         refillButton = new QPushButton(tab);
         refillButton->setObjectName(QStringLiteral("refillButton"));
-        refillButton->setGeometry(QRect(230, 170, 31, 31));
+        refillButton->setGeometry(QRect(230, 180, 31, 31));
         refillButton->setStyleSheet(QLatin1String("#refillButton{\n"
 "background-color: rgb(37, 37, 37);\n"
 "color: white;\n"
@@ -200,10 +200,10 @@ public:
 "}"));
         empty = new QLabel(tab);
         empty->setObjectName(QStringLiteral("empty"));
-        empty->setGeometry(QRect(160, 20, 61, 16));
+        empty->setGeometry(QRect(160, 40, 61, 16));
         empty_2 = new QLabel(tab);
         empty_2->setObjectName(QStringLiteral("empty_2"));
-        empty_2->setGeometry(QRect(160, 170, 61, 16));
+        empty_2->setGeometry(QRect(160, 180, 61, 16));
         Controller->addTab(tab, QString());
         tab_2 = new QWidget();
         tab_2->setObjectName(QStringLiteral("tab_2"));
@@ -405,12 +405,12 @@ public:
 "}"));
         dialblock = new QTextBrowser(tab_2);
         dialblock->setObjectName(QStringLiteral("dialblock"));
-        dialblock->setGeometry(QRect(40, 10, 201, 51));
+        dialblock->setGeometry(QRect(40, 30, 201, 51));
         dialblock->setStyleSheet(QLatin1String("border-radius: 15px;\n"
 ""));
         dial_display = new QLabel(tab_2);
         dial_display->setObjectName(QStringLiteral("dial_display"));
-        dial_display->setGeometry(QRect(50, 20, 181, 41));
+        dial_display->setGeometry(QRect(50, 40, 181, 41));
         dial_display->setStyleSheet(QLatin1String("color: white;\n"
 "background-color: transparent;\n"
 "font: 25 32pt \"Avenir\";;\n"
@@ -462,13 +462,13 @@ public:
         mic_db->setAlignment(Qt::AlignCenter);
         call_label = new QLabel(tab_2);
         call_label->setObjectName(QStringLiteral("call_label"));
-        call_label->setGeometry(QRect(70, 70, 71, 16));
+        call_label->setGeometry(QRect(70, 10, 71, 16));
         call_label->setStyleSheet(QLatin1String("color:white;\n"
 "background-color: transparent;\n"
 "font: 25 15pt \"Avenir\";"));
         call_time = new QLabel(tab_2);
         call_time->setObjectName(QStringLiteral("call_time"));
-        call_time->setGeometry(QRect(150, 70, 71, 16));
+        call_time->setGeometry(QRect(150, 10, 71, 16));
         call_time->setStyleSheet(QLatin1String("color:white;\n"
 "background-color: transparent;\n"
 "font: 25 15pt \"Avenir\";"));
@@ -519,8 +519,8 @@ public:
         dial_display->setText(QString());
         volume_label->setText(QApplication::translate("MainWindow", "volume", 0));
         mic_label->setText(QApplication::translate("MainWindow", "mic", 0));
-        volume_db->setText(QApplication::translate("MainWindow", "0", 0));
-        mic_db->setText(QApplication::translate("MainWindow", "0", 0));
+        volume_db->setText(QApplication::translate("MainWindow", "50", 0));
+        mic_db->setText(QApplication::translate("MainWindow", "50", 0));
         call_label->setText(QString());
         call_time->setText(QString());
         Controller->setTabText(Controller->indexOf(tab_2), QApplication::translate("MainWindow", "Phone", 0));
