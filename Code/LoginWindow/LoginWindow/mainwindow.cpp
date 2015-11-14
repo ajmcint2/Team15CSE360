@@ -137,3 +137,13 @@ void MainWindow::on_call_clicked()
             ui->call_time->setText(elapsedTime);
     }
 }
+
+void MainWindow::on_vol_slider_actionTriggered(int action)
+{
+    ui->volume_db->setText(QString::number(ui->vol_slider->value()));
+}
+
+void MainWindow::on_mic_slider_actionTriggered(int action)
+{
+    ui->mic_db->setText(QString::number(ui->mic_slider->value()));
+}

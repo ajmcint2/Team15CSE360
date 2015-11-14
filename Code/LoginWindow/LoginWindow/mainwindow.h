@@ -2,9 +2,8 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include <QLabel>
-#include <QTimer>
-#include <QTime>
+#include <QtGui>
+#include <QDebug>
 
 namespace Ui {
 class MainWindow;
@@ -20,9 +19,10 @@ public:
     int speed = 0;
     int fuel = 50;
     int count = 0;
-    int t;
+    int t = 0;
     QTimer *timer;
     QTime *time;
+
 
 private slots:
     void on_pushButton_clicked();
@@ -41,6 +41,10 @@ private slots:
     void on_zero_clicked();
     void on_X_clicked();
     void on_call_clicked();
+
+    void on_vol_slider_actionTriggered(int action);
+
+    void on_mic_slider_actionTriggered(int action);
 
 private:
     Ui::MainWindow *ui;
