@@ -18,6 +18,7 @@
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
+#include <QtWidgets/QSlider>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QTabWidget>
 #include <QtWidgets/QTextBrowser>
@@ -44,6 +45,30 @@ public:
     QLabel *empty;
     QLabel *empty_2;
     QWidget *tab_2;
+    QPushButton *one;
+    QPushButton *two;
+    QPushButton *three;
+    QPushButton *four;
+    QPushButton *five;
+    QPushButton *six;
+    QPushButton *seven;
+    QPushButton *eight;
+    QPushButton *nine;
+    QPushButton *zero;
+    QPushButton *call;
+    QPushButton *X;
+    QTextBrowser *dialblock;
+    QLabel *dial_display;
+    QSlider *vol_slider;
+    QSlider *mic_slider;
+    QLabel *volume_label;
+    QLabel *mic_label;
+    QTextBrowser *volBlock;
+    QTextBrowser *micBlock;
+    QLabel *volume_db;
+    QLabel *mic_db;
+    QLabel *call_label;
+    QLabel *call_time;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -58,9 +83,13 @@ public:
         Controller = new QTabWidget(centralwidget);
         Controller->setObjectName(QStringLiteral("Controller"));
         Controller->setGeometry(QRect(-1, 9, 721, 361));
+        Controller->setAutoFillBackground(false);
         Controller->setStyleSheet(QLatin1String("#Controller{\n"
 "color: rgb(25, 25, 25);\n"
 "}"));
+        Controller->setTabPosition(QTabWidget::North);
+        Controller->setTabShape(QTabWidget::Triangular);
+        Controller->setElideMode(Qt::ElideRight);
         tab = new QWidget();
         tab->setObjectName(QStringLiteral("tab"));
         tab->setStyleSheet(QLatin1String("#tab{\n"
@@ -182,6 +211,267 @@ public:
 "background-color: rgb(25, 25, 25);\n"
 "}\n"
 ""));
+        one = new QPushButton(tab_2);
+        one->setObjectName(QStringLiteral("one"));
+        one->setGeometry(QRect(40, 90, 61, 51));
+        one->setStyleSheet(QLatin1String("#one{\n"
+"background-color: rgb(37, 37, 37);\n"
+"color: white;\n"
+"font: 25 30pt \"Avenir\";\n"
+"border-radius: 15px;\n"
+"}\n"
+"\n"
+"#one:pressed{\n"
+"background-color: rgb(27, 27, 27);\n"
+"color: white;\n"
+"font: 25 30pt \"Avenir\";\n"
+"border-radius: 15px;\n"
+"}"));
+        two = new QPushButton(tab_2);
+        two->setObjectName(QStringLiteral("two"));
+        two->setGeometry(QRect(110, 90, 61, 51));
+        two->setStyleSheet(QLatin1String("#two{\n"
+"background-color: rgb(37, 37, 37);\n"
+"color: white;\n"
+"font: 25 30pt \"Avenir\";\n"
+"border-radius: 15px;\n"
+"}\n"
+"\n"
+"#two:pressed{\n"
+"background-color: rgb(27, 27, 27);\n"
+"color: white;\n"
+"font: 25 30pt \"Avenir\";\n"
+"border-radius: 15px;\n"
+"}"));
+        three = new QPushButton(tab_2);
+        three->setObjectName(QStringLiteral("three"));
+        three->setGeometry(QRect(180, 90, 61, 51));
+        three->setStyleSheet(QLatin1String("#three{\n"
+"background-color: rgb(37, 37, 37);\n"
+"color: white;\n"
+"font: 25 30pt \"Avenir\";\n"
+"border-radius: 15px;\n"
+"}\n"
+"\n"
+"#three:pressed{\n"
+"background-color: rgb(27, 27, 27);\n"
+"color: white;\n"
+"font: 25 30pt \"Avenir\";\n"
+"border-radius: 15px;\n"
+"}"));
+        four = new QPushButton(tab_2);
+        four->setObjectName(QStringLiteral("four"));
+        four->setGeometry(QRect(40, 150, 61, 51));
+        four->setStyleSheet(QLatin1String("#four{\n"
+"background-color: rgb(37, 37, 37);\n"
+"color: white;\n"
+"font: 25 30pt \"Avenir\";\n"
+"border-radius: 15px;\n"
+"}\n"
+"\n"
+"#four:pressed{\n"
+"background-color: rgb(27, 27, 27);\n"
+"color: white;\n"
+"font: 25 30pt \"Avenir\";\n"
+"border-radius: 15px;\n"
+"}"));
+        five = new QPushButton(tab_2);
+        five->setObjectName(QStringLiteral("five"));
+        five->setGeometry(QRect(110, 150, 61, 51));
+        five->setStyleSheet(QLatin1String("#five{\n"
+"background-color: rgb(37, 37, 37);\n"
+"color: white;\n"
+"font: 25 30pt \"Avenir\";\n"
+"border-radius: 15px;\n"
+"}\n"
+"\n"
+"#five:pressed{\n"
+"background-color: rgb(27, 27, 27);\n"
+"color: white;\n"
+"font: 25 30pt \"Avenir\";\n"
+"border-radius: 15px;\n"
+"}"));
+        six = new QPushButton(tab_2);
+        six->setObjectName(QStringLiteral("six"));
+        six->setGeometry(QRect(180, 150, 61, 51));
+        six->setStyleSheet(QLatin1String("#six{\n"
+"background-color: rgb(37, 37, 37);\n"
+"color: white;\n"
+"font: 25 30pt \"Avenir\";\n"
+"border-radius: 15px;\n"
+"}\n"
+"\n"
+"#six:pressed{\n"
+"background-color: rgb(27, 27, 27);\n"
+"color: white;\n"
+"font: 25 30pt \"Avenir\";\n"
+"border-radius: 15px;\n"
+"}"));
+        seven = new QPushButton(tab_2);
+        seven->setObjectName(QStringLiteral("seven"));
+        seven->setGeometry(QRect(40, 210, 61, 51));
+        seven->setStyleSheet(QLatin1String("#seven{\n"
+"background-color: rgb(37, 37, 37);\n"
+"color: white;\n"
+"font: 25 30pt \"Avenir\";\n"
+"border-radius: 15px;\n"
+"}\n"
+"\n"
+"#seven:pressed{\n"
+"background-color: rgb(27, 27, 27);\n"
+"color: white;\n"
+"font: 25 30pt \"Avenir\";\n"
+"border-radius: 15px;\n"
+"}"));
+        eight = new QPushButton(tab_2);
+        eight->setObjectName(QStringLiteral("eight"));
+        eight->setGeometry(QRect(110, 210, 61, 51));
+        eight->setStyleSheet(QLatin1String("#eight{\n"
+"background-color: rgb(37, 37, 37);\n"
+"color: white;\n"
+"font: 25 30pt \"Avenir\";\n"
+"border-radius: 15px;\n"
+"}\n"
+"\n"
+"#eight:pressed{\n"
+"background-color: rgb(27, 27, 27);\n"
+"color: white;\n"
+"font: 25 30pt \"Avenir\";\n"
+"border-radius: 15px;\n"
+"}"));
+        nine = new QPushButton(tab_2);
+        nine->setObjectName(QStringLiteral("nine"));
+        nine->setGeometry(QRect(180, 210, 61, 51));
+        nine->setStyleSheet(QLatin1String("#nine{\n"
+"background-color: rgb(37, 37, 37);\n"
+"color: white;\n"
+"font: 25 30pt \"Avenir\";\n"
+"border-radius: 15px;\n"
+"}\n"
+"\n"
+"#nine:pressed{\n"
+"background-color: rgb(27, 27, 27);\n"
+"color: white;\n"
+"font: 25 30pt \"Avenir\";\n"
+"border-radius: 15px;\n"
+"}"));
+        zero = new QPushButton(tab_2);
+        zero->setObjectName(QStringLiteral("zero"));
+        zero->setGeometry(QRect(110, 270, 61, 51));
+        zero->setStyleSheet(QLatin1String("#zero{\n"
+"background-color: rgb(37, 37, 37);\n"
+"color: white;\n"
+"font: 25 30pt \"Avenir\";\n"
+"border-radius: 15px;\n"
+"}\n"
+"\n"
+"#zero:pressed{\n"
+"background-color: rgb(27, 27, 27);\n"
+"color: white;\n"
+"font: 25 30pt \"Avenir\";\n"
+"border-radius: 15px;\n"
+"}"));
+        call = new QPushButton(tab_2);
+        call->setObjectName(QStringLiteral("call"));
+        call->setGeometry(QRect(40, 270, 61, 51));
+        call->setStyleSheet(QLatin1String("#call{\n"
+"background-color: rgb(0, 194, 52);\n"
+"color: white;\n"
+"font: 25 20pt \"Avenir\";\n"
+"border-radius: 15px;\n"
+"}\n"
+"\n"
+"#call:pressed{\n"
+"background-color: rgb(0, 150, 27);\n"
+"color: white;\n"
+"font: 25 20pt \"Avenir\";\n"
+"border-radius: 15px;\n"
+"}"));
+        X = new QPushButton(tab_2);
+        X->setObjectName(QStringLiteral("X"));
+        X->setGeometry(QRect(180, 270, 61, 51));
+        X->setStyleSheet(QLatin1String("#X{\n"
+"background-color: rgb(255, 8, 0);\n"
+"color: white;\n"
+"font: 25 20pt \"Avenir\";\n"
+"border-radius: 15px;\n"
+"}\n"
+"\n"
+"#X:pressed{\n"
+"background-color: rgb(192, 2, 0);\n"
+"color: white;\n"
+"font: 25 20pt \"Avenir\";\n"
+"border-radius: 15px;\n"
+"}"));
+        dialblock = new QTextBrowser(tab_2);
+        dialblock->setObjectName(QStringLiteral("dialblock"));
+        dialblock->setGeometry(QRect(40, 10, 201, 51));
+        dialblock->setStyleSheet(QLatin1String("border-radius: 15px;\n"
+""));
+        dial_display = new QLabel(tab_2);
+        dial_display->setObjectName(QStringLiteral("dial_display"));
+        dial_display->setGeometry(QRect(50, 20, 181, 41));
+        dial_display->setStyleSheet(QLatin1String("color: white;\n"
+"background-color: transparent;\n"
+"font: 25 32pt \"Avenir\";;\n"
+"font-style: italic;"));
+        dial_display->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter);
+        vol_slider = new QSlider(tab_2);
+        vol_slider->setObjectName(QStringLiteral("vol_slider"));
+        vol_slider->setGeometry(QRect(600, 10, 22, 261));
+        vol_slider->setOrientation(Qt::Vertical);
+        mic_slider = new QSlider(tab_2);
+        mic_slider->setObjectName(QStringLiteral("mic_slider"));
+        mic_slider->setGeometry(QRect(660, 10, 22, 261));
+        mic_slider->setOrientation(Qt::Vertical);
+        volume_label = new QLabel(tab_2);
+        volume_label->setObjectName(QStringLiteral("volume_label"));
+        volume_label->setGeometry(QRect(590, 270, 41, 16));
+        volume_label->setStyleSheet(QLatin1String("color: white;\n"
+"background-color: transparent;\n"
+"font: 25 12pt \"Avenir\";"));
+        mic_label = new QLabel(tab_2);
+        mic_label->setObjectName(QStringLiteral("mic_label"));
+        mic_label->setGeometry(QRect(660, 270, 21, 16));
+        mic_label->setStyleSheet(QLatin1String("color: white;\n"
+"background-color: transparent;\n"
+"font: 25 12pt \"Avenir\";"));
+        volBlock = new QTextBrowser(tab_2);
+        volBlock->setObjectName(QStringLiteral("volBlock"));
+        volBlock->setGeometry(QRect(590, 290, 41, 31));
+        volBlock->setStyleSheet(QLatin1String("border-radius: 10px;\n"
+""));
+        micBlock = new QTextBrowser(tab_2);
+        micBlock->setObjectName(QStringLiteral("micBlock"));
+        micBlock->setGeometry(QRect(650, 290, 41, 31));
+        micBlock->setStyleSheet(QLatin1String("border-radius: 10px;\n"
+""));
+        volume_db = new QLabel(tab_2);
+        volume_db->setObjectName(QStringLiteral("volume_db"));
+        volume_db->setGeometry(QRect(590, 295, 41, 21));
+        volume_db->setStyleSheet(QLatin1String("color: white;\n"
+"background-color: transparent;\n"
+"font: 25 20pt \"Avenir\";"));
+        volume_db->setAlignment(Qt::AlignCenter);
+        mic_db = new QLabel(tab_2);
+        mic_db->setObjectName(QStringLiteral("mic_db"));
+        mic_db->setGeometry(QRect(650, 290, 41, 31));
+        mic_db->setStyleSheet(QLatin1String("color: white;\n"
+"background-color: transparent;\n"
+"font: 25 20pt \"Avenir\";"));
+        mic_db->setAlignment(Qt::AlignCenter);
+        call_label = new QLabel(tab_2);
+        call_label->setObjectName(QStringLiteral("call_label"));
+        call_label->setGeometry(QRect(70, 70, 71, 16));
+        call_label->setStyleSheet(QLatin1String("color:white;\n"
+"background-color: transparent;\n"
+"font: 25 15pt \"Avenir\";"));
+        call_time = new QLabel(tab_2);
+        call_time->setObjectName(QStringLiteral("call_time"));
+        call_time->setGeometry(QRect(150, 70, 71, 16));
+        call_time->setStyleSheet(QLatin1String("color:white;\n"
+"background-color: transparent;\n"
+"font: 25 15pt \"Avenir\";"));
         Controller->addTab(tab_2, QString());
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
@@ -194,7 +484,7 @@ public:
 
         retranslateUi(MainWindow);
 
-        Controller->setCurrentIndex(0);
+        Controller->setCurrentIndex(1);
 
 
         QMetaObject::connectSlotsByName(MainWindow);
@@ -213,8 +503,27 @@ public:
         refillButton->setText(QApplication::translate("MainWindow", "R", 0));
         empty->setText(QString());
         empty_2->setText(QString());
-        Controller->setTabText(Controller->indexOf(tab), QApplication::translate("MainWindow", "Tab 1", 0));
-        Controller->setTabText(Controller->indexOf(tab_2), QApplication::translate("MainWindow", "Tab 2", 0));
+        Controller->setTabText(Controller->indexOf(tab), QApplication::translate("MainWindow", "Drive", 0));
+        one->setText(QApplication::translate("MainWindow", "1", 0));
+        two->setText(QApplication::translate("MainWindow", "2", 0));
+        three->setText(QApplication::translate("MainWindow", "3", 0));
+        four->setText(QApplication::translate("MainWindow", "4", 0));
+        five->setText(QApplication::translate("MainWindow", "5", 0));
+        six->setText(QApplication::translate("MainWindow", "6", 0));
+        seven->setText(QApplication::translate("MainWindow", "7", 0));
+        eight->setText(QApplication::translate("MainWindow", "8", 0));
+        nine->setText(QApplication::translate("MainWindow", "9", 0));
+        zero->setText(QApplication::translate("MainWindow", "0", 0));
+        call->setText(QApplication::translate("MainWindow", "CALL", 0));
+        X->setText(QApplication::translate("MainWindow", "X", 0));
+        dial_display->setText(QString());
+        volume_label->setText(QApplication::translate("MainWindow", "volume", 0));
+        mic_label->setText(QApplication::translate("MainWindow", "mic", 0));
+        volume_db->setText(QApplication::translate("MainWindow", "0", 0));
+        mic_db->setText(QApplication::translate("MainWindow", "0", 0));
+        call_label->setText(QString());
+        call_time->setText(QString());
+        Controller->setTabText(Controller->indexOf(tab_2), QApplication::translate("MainWindow", "Phone", 0));
     } // retranslateUi
 
 };

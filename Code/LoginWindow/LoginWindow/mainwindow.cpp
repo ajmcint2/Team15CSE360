@@ -6,6 +6,10 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    time = new QTime();
+    time->setHMS(0,0,0,0);
+    timer = new QTimer(this);
+    connect(timer, SIGNAL(timeout()), this, SLOT(on_call_clicked()));
 }
 
 MainWindow::~MainWindow()
@@ -40,4 +44,96 @@ void MainWindow::on_refillButton_clicked()
 {
     fuel = 100;
     ui->setfuel_label->setText(QString::number(fuel));
+}
+
+void MainWindow::on_one_clicked()
+{
+    if (count != 10){
+        count++;
+        ui->dial_display->setText(ui->dial_display->text() + "1");
+    }
+}
+void MainWindow::on_two_clicked()
+{
+    if (count != 10){
+        count++;
+        ui->dial_display->setText(ui->dial_display->text() + "2");
+    }
+}
+void MainWindow::on_three_clicked()
+{
+    if (count != 10){
+        count++;
+        ui->dial_display->setText(ui->dial_display->text() + "3");
+    }
+}
+void MainWindow::on_four_clicked()
+{
+    if (count != 10){
+        count++;
+        ui->dial_display->setText(ui->dial_display->text() + "4");
+    }
+}
+void MainWindow::on_five_clicked()
+{
+    if (count != 10){
+        count++;
+        ui->dial_display->setText(ui->dial_display->text() + "5");
+    }
+}
+void MainWindow::on_six_clicked()
+{
+    if (count != 10){
+        count++;
+        ui->dial_display->setText(ui->dial_display->text() + "6");
+    }
+}
+void MainWindow::on_seven_clicked()
+{
+    if (count != 10){
+        count++;
+        ui->dial_display->setText(ui->dial_display->text() + "7");
+    }
+}
+void MainWindow::on_eight_clicked()
+{
+    if (count != 10){
+        count++;
+        ui->dial_display->setText(ui->dial_display->text() + "8");
+    }
+}
+void MainWindow::on_nine_clicked()
+{
+    if (count != 10){
+        count++;
+        ui->dial_display->setText(ui->dial_display->text() + "9");
+    }
+}
+void MainWindow::on_zero_clicked()
+{
+    if (count != 10){
+        count++;
+        ui->dial_display->setText(ui->dial_display->text() + "0");
+    }
+}
+
+void MainWindow::on_X_clicked()
+{
+    ui->dial_display->setText("");
+    timer->stop();
+    count = 0;
+    t = 0;
+}
+
+void MainWindow::on_call_clicked()
+{
+    if (count == 10){
+        ui->call_label->setText("Call time: ");
+        timer->start(1);
+        t = t+1;
+        QTime et;
+        et = time->addMSecs(t);
+            QString elapsedTime = et.toString("hh:mm:ss");
+            ui->call_time->setText(elapsedTime);
+    }
 }

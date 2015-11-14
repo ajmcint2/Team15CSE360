@@ -26,13 +26,25 @@
       <height>361</height>
      </rect>
     </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
     <property name="styleSheet">
      <string notr="true">#Controller{
 color: rgb(25, 25, 25);
 }</string>
     </property>
+    <property name="tabPosition">
+     <enum>QTabWidget::North</enum>
+    </property>
+    <property name="tabShape">
+     <enum>QTabWidget::Triangular</enum>
+    </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>1</number>
+    </property>
+    <property name="elideMode">
+     <enum>Qt::ElideRight</enum>
     </property>
     <widget class="QWidget" name="tab">
      <property name="styleSheet">
@@ -42,7 +54,7 @@ background-color: rgb(25, 25, 25);
 </string>
      </property>
      <attribute name="title">
-      <string>Tab 1</string>
+      <string>Drive</string>
      </attribute>
      <widget class="QTextBrowser" name="Speedometer">
       <property name="geometry">
@@ -299,8 +311,548 @@ background-color: rgb(25, 25, 25);
 </string>
      </property>
      <attribute name="title">
-      <string>Tab 2</string>
+      <string>Phone</string>
      </attribute>
+     <widget class="QPushButton" name="one">
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>90</y>
+        <width>61</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">#one{
+background-color: rgb(37, 37, 37);
+color: white;
+font: 25 30pt &quot;Avenir&quot;;
+border-radius: 15px;
+}
+
+#one:pressed{
+background-color: rgb(27, 27, 27);
+color: white;
+font: 25 30pt &quot;Avenir&quot;;
+border-radius: 15px;
+}</string>
+      </property>
+      <property name="text">
+       <string>1</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="two">
+      <property name="geometry">
+       <rect>
+        <x>110</x>
+        <y>90</y>
+        <width>61</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">#two{
+background-color: rgb(37, 37, 37);
+color: white;
+font: 25 30pt &quot;Avenir&quot;;
+border-radius: 15px;
+}
+
+#two:pressed{
+background-color: rgb(27, 27, 27);
+color: white;
+font: 25 30pt &quot;Avenir&quot;;
+border-radius: 15px;
+}</string>
+      </property>
+      <property name="text">
+       <string>2</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="three">
+      <property name="geometry">
+       <rect>
+        <x>180</x>
+        <y>90</y>
+        <width>61</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">#three{
+background-color: rgb(37, 37, 37);
+color: white;
+font: 25 30pt &quot;Avenir&quot;;
+border-radius: 15px;
+}
+
+#three:pressed{
+background-color: rgb(27, 27, 27);
+color: white;
+font: 25 30pt &quot;Avenir&quot;;
+border-radius: 15px;
+}</string>
+      </property>
+      <property name="text">
+       <string>3</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="four">
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>150</y>
+        <width>61</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">#four{
+background-color: rgb(37, 37, 37);
+color: white;
+font: 25 30pt &quot;Avenir&quot;;
+border-radius: 15px;
+}
+
+#four:pressed{
+background-color: rgb(27, 27, 27);
+color: white;
+font: 25 30pt &quot;Avenir&quot;;
+border-radius: 15px;
+}</string>
+      </property>
+      <property name="text">
+       <string>4</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="five">
+      <property name="geometry">
+       <rect>
+        <x>110</x>
+        <y>150</y>
+        <width>61</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">#five{
+background-color: rgb(37, 37, 37);
+color: white;
+font: 25 30pt &quot;Avenir&quot;;
+border-radius: 15px;
+}
+
+#five:pressed{
+background-color: rgb(27, 27, 27);
+color: white;
+font: 25 30pt &quot;Avenir&quot;;
+border-radius: 15px;
+}</string>
+      </property>
+      <property name="text">
+       <string>5</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="six">
+      <property name="geometry">
+       <rect>
+        <x>180</x>
+        <y>150</y>
+        <width>61</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">#six{
+background-color: rgb(37, 37, 37);
+color: white;
+font: 25 30pt &quot;Avenir&quot;;
+border-radius: 15px;
+}
+
+#six:pressed{
+background-color: rgb(27, 27, 27);
+color: white;
+font: 25 30pt &quot;Avenir&quot;;
+border-radius: 15px;
+}</string>
+      </property>
+      <property name="text">
+       <string>6</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="seven">
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>210</y>
+        <width>61</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">#seven{
+background-color: rgb(37, 37, 37);
+color: white;
+font: 25 30pt &quot;Avenir&quot;;
+border-radius: 15px;
+}
+
+#seven:pressed{
+background-color: rgb(27, 27, 27);
+color: white;
+font: 25 30pt &quot;Avenir&quot;;
+border-radius: 15px;
+}</string>
+      </property>
+      <property name="text">
+       <string>7</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="eight">
+      <property name="geometry">
+       <rect>
+        <x>110</x>
+        <y>210</y>
+        <width>61</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">#eight{
+background-color: rgb(37, 37, 37);
+color: white;
+font: 25 30pt &quot;Avenir&quot;;
+border-radius: 15px;
+}
+
+#eight:pressed{
+background-color: rgb(27, 27, 27);
+color: white;
+font: 25 30pt &quot;Avenir&quot;;
+border-radius: 15px;
+}</string>
+      </property>
+      <property name="text">
+       <string>8</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="nine">
+      <property name="geometry">
+       <rect>
+        <x>180</x>
+        <y>210</y>
+        <width>61</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">#nine{
+background-color: rgb(37, 37, 37);
+color: white;
+font: 25 30pt &quot;Avenir&quot;;
+border-radius: 15px;
+}
+
+#nine:pressed{
+background-color: rgb(27, 27, 27);
+color: white;
+font: 25 30pt &quot;Avenir&quot;;
+border-radius: 15px;
+}</string>
+      </property>
+      <property name="text">
+       <string>9</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="zero">
+      <property name="geometry">
+       <rect>
+        <x>110</x>
+        <y>270</y>
+        <width>61</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">#zero{
+background-color: rgb(37, 37, 37);
+color: white;
+font: 25 30pt &quot;Avenir&quot;;
+border-radius: 15px;
+}
+
+#zero:pressed{
+background-color: rgb(27, 27, 27);
+color: white;
+font: 25 30pt &quot;Avenir&quot;;
+border-radius: 15px;
+}</string>
+      </property>
+      <property name="text">
+       <string>0</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="call">
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>270</y>
+        <width>61</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">#call{
+background-color: rgb(0, 194, 52);
+color: white;
+font: 25 20pt &quot;Avenir&quot;;
+border-radius: 15px;
+}
+
+#call:pressed{
+background-color: rgb(0, 150, 27);
+color: white;
+font: 25 20pt &quot;Avenir&quot;;
+border-radius: 15px;
+}</string>
+      </property>
+      <property name="text">
+       <string>CALL</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="X">
+      <property name="geometry">
+       <rect>
+        <x>180</x>
+        <y>270</y>
+        <width>61</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">#X{
+background-color: rgb(255, 8, 0);
+color: white;
+font: 25 20pt &quot;Avenir&quot;;
+border-radius: 15px;
+}
+
+#X:pressed{
+background-color: rgb(192, 2, 0);
+color: white;
+font: 25 20pt &quot;Avenir&quot;;
+border-radius: 15px;
+}</string>
+      </property>
+      <property name="text">
+       <string>X</string>
+      </property>
+     </widget>
+     <widget class="QTextBrowser" name="dialblock">
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>10</y>
+        <width>201</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border-radius: 15px;
+</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="dial_display">
+      <property name="geometry">
+       <rect>
+        <x>50</x>
+        <y>20</y>
+        <width>181</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: white;
+background-color: transparent;
+font: 25 32pt &quot;Avenir&quot;;;
+font-style: italic;</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+      </property>
+     </widget>
+     <widget class="QSlider" name="vol_slider">
+      <property name="geometry">
+       <rect>
+        <x>600</x>
+        <y>10</y>
+        <width>22</width>
+        <height>261</height>
+       </rect>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
+      </property>
+     </widget>
+     <widget class="QSlider" name="mic_slider">
+      <property name="geometry">
+       <rect>
+        <x>660</x>
+        <y>10</y>
+        <width>22</width>
+        <height>261</height>
+       </rect>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
+      </property>
+     </widget>
+     <widget class="QLabel" name="volume_label">
+      <property name="geometry">
+       <rect>
+        <x>590</x>
+        <y>270</y>
+        <width>41</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: white;
+background-color: transparent;
+font: 25 12pt &quot;Avenir&quot;;</string>
+      </property>
+      <property name="text">
+       <string>volume</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="mic_label">
+      <property name="geometry">
+       <rect>
+        <x>660</x>
+        <y>270</y>
+        <width>21</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: white;
+background-color: transparent;
+font: 25 12pt &quot;Avenir&quot;;</string>
+      </property>
+      <property name="text">
+       <string>mic</string>
+      </property>
+     </widget>
+     <widget class="QTextBrowser" name="volBlock">
+      <property name="geometry">
+       <rect>
+        <x>590</x>
+        <y>290</y>
+        <width>41</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border-radius: 10px;
+</string>
+      </property>
+     </widget>
+     <widget class="QTextBrowser" name="micBlock">
+      <property name="geometry">
+       <rect>
+        <x>650</x>
+        <y>290</y>
+        <width>41</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border-radius: 10px;
+</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="volume_db">
+      <property name="geometry">
+       <rect>
+        <x>590</x>
+        <y>295</y>
+        <width>41</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: white;
+background-color: transparent;
+font: 25 20pt &quot;Avenir&quot;;</string>
+      </property>
+      <property name="text">
+       <string>0</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="mic_db">
+      <property name="geometry">
+       <rect>
+        <x>650</x>
+        <y>290</y>
+        <width>41</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: white;
+background-color: transparent;
+font: 25 20pt &quot;Avenir&quot;;</string>
+      </property>
+      <property name="text">
+       <string>0</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="call_label">
+      <property name="geometry">
+       <rect>
+        <x>70</x>
+        <y>70</y>
+        <width>71</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color:white;
+background-color: transparent;
+font: 25 15pt &quot;Avenir&quot;;</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="call_time">
+      <property name="geometry">
+       <rect>
+        <x>150</x>
+        <y>70</y>
+        <width>71</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color:white;
+background-color: transparent;
+font: 25 15pt &quot;Avenir&quot;;</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
     </widget>
    </widget>
   </widget>
