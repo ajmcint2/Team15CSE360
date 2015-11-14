@@ -15,6 +15,7 @@
 #include <QtWidgets/QButtonGroup>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
+#include <QtWidgets/QListWidget>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
@@ -69,6 +70,10 @@ public:
     QLabel *mic_db;
     QLabel *call_label;
     QLabel *call_time;
+    QPushButton *add;
+    QPushButton *remove;
+    QListWidget *contactList;
+    QLabel *contactError;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -472,6 +477,50 @@ public:
         call_time->setStyleSheet(QLatin1String("color:white;\n"
 "background-color: transparent;\n"
 "font: 25 15pt \"Avenir\";"));
+        add = new QPushButton(tab_2);
+        add->setObjectName(QStringLiteral("add"));
+        add->setGeometry(QRect(300, 270, 101, 31));
+        add->setStyleSheet(QLatin1String("#add{\n"
+"background-color: rgb(37, 37, 37);\n"
+"color: white;\n"
+"font: 25 20pt \"Avenir\";\n"
+"border-radius: 15px;\n"
+"}\n"
+"\n"
+"#add:pressed{\n"
+"background-color: rgb(27, 27, 27);\n"
+"color: white;\n"
+"font: 25 20pt \"Avenir\";\n"
+"border-radius: 15px;\n"
+"}"));
+        remove = new QPushButton(tab_2);
+        remove->setObjectName(QStringLiteral("remove"));
+        remove->setGeometry(QRect(410, 270, 101, 31));
+        remove->setStyleSheet(QLatin1String("#remove{\n"
+"background-color: rgb(37, 37, 37);\n"
+"color: white;\n"
+"font: 25 20pt \"Avenir\";\n"
+"border-radius: 15px;\n"
+"}\n"
+"\n"
+"#remove:pressed{\n"
+"background-color: rgb(27, 27, 27);\n"
+"color: white;\n"
+"font: 25 20pt \"Avenir\";\n"
+"border-radius: 15px;\n"
+"}"));
+        contactList = new QListWidget(tab_2);
+        contactList->setObjectName(QStringLiteral("contactList"));
+        contactList->setGeometry(QRect(295, 20, 221, 241));
+        contactList->setStyleSheet(QLatin1String("font: 25 38pt \"Avenir\";\n"
+"color:white;"));
+        contactError = new QLabel(tab_2);
+        contactError->setObjectName(QStringLiteral("contactError"));
+        contactError->setGeometry(QRect(300, 310, 211, 16));
+        contactError->setStyleSheet(QLatin1String("color:white;\n"
+"background-color: transparent;\n"
+"font: 25 15pt \"Avenir\";"));
+        contactError->setAlignment(Qt::AlignCenter);
         Controller->addTab(tab_2, QString());
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
@@ -523,6 +572,9 @@ public:
         mic_db->setText(QApplication::translate("MainWindow", "50", 0));
         call_label->setText(QString());
         call_time->setText(QString());
+        add->setText(QApplication::translate("MainWindow", "add", 0));
+        remove->setText(QApplication::translate("MainWindow", "remove", 0));
+        contactError->setText(QString());
         Controller->setTabText(Controller->indexOf(tab_2), QApplication::translate("MainWindow", "Phone", 0));
     } // retranslateUi
 

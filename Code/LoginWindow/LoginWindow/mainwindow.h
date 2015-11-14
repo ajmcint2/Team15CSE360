@@ -20,7 +20,9 @@ public:
     int fuel = 50;
     int count = 0;
     int t = 0;
+
     QTimer *timer;
+
     QTime *time;
 
 
@@ -41,10 +43,11 @@ private slots:
     void on_zero_clicked();
     void on_X_clicked();
     void on_call_clicked();
-
     void on_vol_slider_actionTriggered(int action);
-
     void on_mic_slider_actionTriggered(int action);
+    void on_add_clicked();
+    void on_contactList_activated(const QModelIndex &index);
+    void on_remove_clicked();
 
 private:
     Ui::MainWindow *ui;

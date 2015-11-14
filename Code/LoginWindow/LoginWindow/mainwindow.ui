@@ -853,6 +853,97 @@ font: 25 15pt &quot;Avenir&quot;;</string>
        <string/>
       </property>
      </widget>
+     <widget class="QPushButton" name="add">
+      <property name="geometry">
+       <rect>
+        <x>300</x>
+        <y>270</y>
+        <width>101</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">#add{
+background-color: rgb(37, 37, 37);
+color: white;
+font: 25 20pt &quot;Avenir&quot;;
+border-radius: 15px;
+}
+
+#add:pressed{
+background-color: rgb(27, 27, 27);
+color: white;
+font: 25 20pt &quot;Avenir&quot;;
+border-radius: 15px;
+}</string>
+      </property>
+      <property name="text">
+       <string>add</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="remove">
+      <property name="geometry">
+       <rect>
+        <x>410</x>
+        <y>270</y>
+        <width>101</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">#remove{
+background-color: rgb(37, 37, 37);
+color: white;
+font: 25 20pt &quot;Avenir&quot;;
+border-radius: 15px;
+}
+
+#remove:pressed{
+background-color: rgb(27, 27, 27);
+color: white;
+font: 25 20pt &quot;Avenir&quot;;
+border-radius: 15px;
+}</string>
+      </property>
+      <property name="text">
+       <string>remove</string>
+      </property>
+     </widget>
+     <widget class="QListWidget" name="contactList">
+      <property name="geometry">
+       <rect>
+        <x>295</x>
+        <y>20</y>
+        <width>221</width>
+        <height>241</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 25 38pt &quot;Avenir&quot;;
+color:white;</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="contactError">
+      <property name="geometry">
+       <rect>
+        <x>300</x>
+        <y>310</y>
+        <width>211</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color:white;
+background-color: transparent;
+font: 25 15pt &quot;Avenir&quot;;</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
     </widget>
    </widget>
   </widget>
