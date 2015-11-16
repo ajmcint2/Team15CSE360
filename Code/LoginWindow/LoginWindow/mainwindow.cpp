@@ -210,6 +210,7 @@ void MainWindow::on_contactList_activated(const QModelIndex &index)
 {
     QListWidgetItem *num = ui->contactList->currentItem();
     ui->dial_display->setText(num->text());
+    count = 10;
 }
 
 void MainWindow::on_remove_clicked()
