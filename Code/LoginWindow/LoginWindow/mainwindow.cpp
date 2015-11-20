@@ -16,6 +16,9 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->vol_slider->setValue(50);
     ui->mic_slider->setValue(50);
     ui->Controller->setCurrentIndex(0);
+    ui->radio_slider->setValue(50);
+
+    ui->radio_amlist->hide();
 }
 
 MainWindow::~MainWindow()
@@ -25,24 +28,40 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_pushButton_clicked()
 {
-    if(ui->pushButton->text() == "START")
+    if(ui->pushButton->text() == "START"){
+        ui->setfuel_label->setText(QString::number(fuel));
         ui->pushButton->setText("STOP");
+    }
     else
         close();
 }
 
-void MainWindow::on_accel_clicked()
+void MainWindow::on_accel_pressed()
 {
-    if(ui->pushButton->text() == "STOP" && speed != 180)
-        speed += 5;
-        ui->setspeed_label->setText(QString::number(speed));
+    int temp = speed;
+    //ui->accel->setAutoRepeat(true);
+    ui->accel->setAutoRepeatInterval(100);
+    if(ui->pushButton->text() == "STOP" && speed != 180){
+            temp += 1;
+            ui->setspeed_label->setText(QString::number(temp));
+            ui->accel->setAutoRepeat(true);
+            //ui->accel->setAutoRepeatInterval(100);
+    }
+    speed = temp;
 }
 
-void MainWindow::on_decel_clicked()
+void MainWindow::on_decel_pressed()
 {
-    if(ui->pushButton->text() == "STOP" && speed != 0)
-        speed -= 5;
-        ui->setspeed_label->setText(QString::number(speed));
+    int temp = speed;
+    //ui->decel->setAutoRepeat(true);
+    ui->decel->setAutoRepeatInterval(100);
+    if(ui->pushButton->text() == "STOP" && speed != 0){
+        temp -= 1;
+        ui->setspeed_label->setText(QString::number(temp));
+        ui->decel->setAutoRepeat(true);
+        //ui->decel->setAutoRepeatInterval(100);
+    }
+    speed = temp;
 }
 
 void MainWindow::on_refillButton_clicked()
@@ -216,4 +235,21 @@ void MainWindow::on_contactList_activated(const QModelIndex &index)
 void MainWindow::on_remove_clicked()
 {
     ui->contactList->takeItem(ui->contactList->row(ui->contactList->currentItem()));
+}
+
+void MainWindow::on_fm_button_clicked()
+{
+    ui->radio_amlist->hide();
+    ui->radio_fmlist->show();
+}
+
+void MainWindow::on_am_button_clicked()
+{
+    ui->radio_amlist->show();
+    ui->radio_fmlist->hide();
+}
+
+void MainWindow::on_radio_slider_actionTriggered(int action)
+{
+    ui->radio_db->setText(QString::number(ui->radio_slider->value()));
 }

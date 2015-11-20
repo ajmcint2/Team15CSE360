@@ -19,8 +19,8 @@
 
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_MainWindow_t {
-    QByteArrayData data[25];
-    char stringdata0[412];
+    QByteArrayData data[28];
+    char stringdata0[486];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -32,8 +32,8 @@ static const qt_meta_stringdata_MainWindow_t qt_meta_stringdata_MainWindow = {
 QT_MOC_LITERAL(0, 0, 10), // "MainWindow"
 QT_MOC_LITERAL(1, 11, 21), // "on_pushButton_clicked"
 QT_MOC_LITERAL(2, 33, 0), // ""
-QT_MOC_LITERAL(3, 34, 16), // "on_accel_clicked"
-QT_MOC_LITERAL(4, 51, 16), // "on_decel_clicked"
+QT_MOC_LITERAL(3, 34, 16), // "on_accel_pressed"
+QT_MOC_LITERAL(4, 51, 16), // "on_decel_pressed"
 QT_MOC_LITERAL(5, 68, 23), // "on_refillButton_clicked"
 QT_MOC_LITERAL(6, 92, 14), // "on_one_clicked"
 QT_MOC_LITERAL(7, 107, 14), // "on_two_clicked"
@@ -53,11 +53,14 @@ QT_MOC_LITERAL(20, 318, 29), // "on_mic_slider_actionTriggered"
 QT_MOC_LITERAL(21, 348, 14), // "on_add_clicked"
 QT_MOC_LITERAL(22, 363, 24), // "on_contactList_activated"
 QT_MOC_LITERAL(23, 388, 5), // "index"
-QT_MOC_LITERAL(24, 394, 17) // "on_remove_clicked"
+QT_MOC_LITERAL(24, 394, 17), // "on_remove_clicked"
+QT_MOC_LITERAL(25, 412, 20), // "on_fm_button_clicked"
+QT_MOC_LITERAL(26, 433, 20), // "on_am_button_clicked"
+QT_MOC_LITERAL(27, 454, 31) // "on_radio_slider_actionTriggered"
 
     },
     "MainWindow\0on_pushButton_clicked\0\0"
-    "on_accel_clicked\0on_decel_clicked\0"
+    "on_accel_pressed\0on_decel_pressed\0"
     "on_refillButton_clicked\0on_one_clicked\0"
     "on_two_clicked\0on_three_clicked\0"
     "on_four_clicked\0on_five_clicked\0"
@@ -67,7 +70,9 @@ QT_MOC_LITERAL(24, 394, 17) // "on_remove_clicked"
     "on_call_clicked\0on_vol_slider_actionTriggered\0"
     "action\0on_mic_slider_actionTriggered\0"
     "on_add_clicked\0on_contactList_activated\0"
-    "index\0on_remove_clicked"
+    "index\0on_remove_clicked\0on_fm_button_clicked\0"
+    "on_am_button_clicked\0"
+    "on_radio_slider_actionTriggered"
 };
 #undef QT_MOC_LITERAL
 
@@ -77,7 +82,7 @@ static const uint qt_meta_data_MainWindow[] = {
        7,       // revision
        0,       // classname
        0,    0, // classinfo
-      21,   14, // methods
+      24,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -85,27 +90,30 @@ static const uint qt_meta_data_MainWindow[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags
-       1,    0,  119,    2, 0x08 /* Private */,
-       3,    0,  120,    2, 0x08 /* Private */,
-       4,    0,  121,    2, 0x08 /* Private */,
-       5,    0,  122,    2, 0x08 /* Private */,
-       6,    0,  123,    2, 0x08 /* Private */,
-       7,    0,  124,    2, 0x08 /* Private */,
-       8,    0,  125,    2, 0x08 /* Private */,
-       9,    0,  126,    2, 0x08 /* Private */,
-      10,    0,  127,    2, 0x08 /* Private */,
-      11,    0,  128,    2, 0x08 /* Private */,
-      12,    0,  129,    2, 0x08 /* Private */,
-      13,    0,  130,    2, 0x08 /* Private */,
-      14,    0,  131,    2, 0x08 /* Private */,
-      15,    0,  132,    2, 0x08 /* Private */,
-      16,    0,  133,    2, 0x08 /* Private */,
-      17,    0,  134,    2, 0x08 /* Private */,
-      18,    1,  135,    2, 0x08 /* Private */,
-      20,    1,  138,    2, 0x08 /* Private */,
-      21,    0,  141,    2, 0x08 /* Private */,
-      22,    1,  142,    2, 0x08 /* Private */,
-      24,    0,  145,    2, 0x08 /* Private */,
+       1,    0,  134,    2, 0x08 /* Private */,
+       3,    0,  135,    2, 0x08 /* Private */,
+       4,    0,  136,    2, 0x08 /* Private */,
+       5,    0,  137,    2, 0x08 /* Private */,
+       6,    0,  138,    2, 0x08 /* Private */,
+       7,    0,  139,    2, 0x08 /* Private */,
+       8,    0,  140,    2, 0x08 /* Private */,
+       9,    0,  141,    2, 0x08 /* Private */,
+      10,    0,  142,    2, 0x08 /* Private */,
+      11,    0,  143,    2, 0x08 /* Private */,
+      12,    0,  144,    2, 0x08 /* Private */,
+      13,    0,  145,    2, 0x08 /* Private */,
+      14,    0,  146,    2, 0x08 /* Private */,
+      15,    0,  147,    2, 0x08 /* Private */,
+      16,    0,  148,    2, 0x08 /* Private */,
+      17,    0,  149,    2, 0x08 /* Private */,
+      18,    1,  150,    2, 0x08 /* Private */,
+      20,    1,  153,    2, 0x08 /* Private */,
+      21,    0,  156,    2, 0x08 /* Private */,
+      22,    1,  157,    2, 0x08 /* Private */,
+      24,    0,  160,    2, 0x08 /* Private */,
+      25,    0,  161,    2, 0x08 /* Private */,
+      26,    0,  162,    2, 0x08 /* Private */,
+      27,    1,  163,    2, 0x08 /* Private */,
 
  // slots: parameters
     QMetaType::Void,
@@ -129,6 +137,9 @@ static const uint qt_meta_data_MainWindow[] = {
     QMetaType::Void,
     QMetaType::Void, QMetaType::QModelIndex,   23,
     QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void, QMetaType::Int,   19,
 
        0        // eod
 };
@@ -140,8 +151,8 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         Q_UNUSED(_t)
         switch (_id) {
         case 0: _t->on_pushButton_clicked(); break;
-        case 1: _t->on_accel_clicked(); break;
-        case 2: _t->on_decel_clicked(); break;
+        case 1: _t->on_accel_pressed(); break;
+        case 2: _t->on_decel_pressed(); break;
         case 3: _t->on_refillButton_clicked(); break;
         case 4: _t->on_one_clicked(); break;
         case 5: _t->on_two_clicked(); break;
@@ -160,6 +171,9 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 18: _t->on_add_clicked(); break;
         case 19: _t->on_contactList_activated((*reinterpret_cast< const QModelIndex(*)>(_a[1]))); break;
         case 20: _t->on_remove_clicked(); break;
+        case 21: _t->on_fm_button_clicked(); break;
+        case 22: _t->on_am_button_clicked(); break;
+        case 23: _t->on_radio_slider_actionTriggered((*reinterpret_cast< int(*)>(_a[1]))); break;
         default: ;
         }
     }
@@ -190,13 +204,13 @@ int MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 21)
+        if (_id < 24)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 21;
+        _id -= 24;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 21)
+        if (_id < 24)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 21;
+        _id -= 24;
     }
     return _id;
 }

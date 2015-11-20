@@ -1,0 +1,38 @@
+Meeting started 1:00
+
+Members Present:
+Team 15
+Garret
+
+Meeting:
+Reis: Question about design:
+	-sequence diagram showing function between functions
+	-sequence diagram showing each individual function
+	-system wide sequence
+	-try to model use cases
+	
+Michael : State Diagram
+	-need initialize state (black dot)
+	-need end state (white dot w/ black center)
+	-state diagram for each class individually
+	-when car runs out of fuel, stop moving the car
+	-user stops accelerating when max speed or lets go pedal
+	-only exit when speed = 0 (not moving)
+	
+Alex: GUI
+	-make refuel button bigger
+	-maybe add a speed and fuel display to each
+	
+Garret: 
+	-testing
+	-how we will do testing (white, black, unit, integration)
+	-what are expected results
+	-document error cases
+	-version control
+	-finish user guide
+	-what you need to run software (exe or environment)
+	-every step needed to get into software
+	-add (Revisions) or (New)
+	-mention coding standards
+	
+	

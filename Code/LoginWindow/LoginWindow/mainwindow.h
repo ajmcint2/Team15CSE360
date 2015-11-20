@@ -28,8 +28,8 @@ public:
 
 private slots:
     void on_pushButton_clicked();
-    void on_accel_clicked();
-    void on_decel_clicked();
+    void on_accel_pressed();
+    void on_decel_pressed();
     void on_refillButton_clicked();
     void on_one_clicked();
     void on_two_clicked();
@@ -48,6 +48,10 @@ private slots:
     void on_add_clicked();
     void on_contactList_activated(const QModelIndex &index);
     void on_remove_clicked();
+    void on_fm_button_clicked();
+    void on_am_button_clicked();
+
+    void on_radio_slider_actionTriggered(int action);
 
 private:
     Ui::MainWindow *ui;
