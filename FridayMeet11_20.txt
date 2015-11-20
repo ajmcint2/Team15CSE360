@@ -1,0 +1,14 @@
+Friday Meet 11/20/15
+
+To do's:
+Save stats and publish to tab
+Create trip structs
+Save trip in vectors
+
+Add Revisions and New
+Test Plan
+User Guide
+Sequence Diagrams
+State Diagrams
+
+

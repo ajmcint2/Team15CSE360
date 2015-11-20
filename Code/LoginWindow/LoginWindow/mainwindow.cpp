@@ -19,6 +19,8 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->radio_slider->setValue(50);
 
     ui->radio_amlist->hide();
+
+    setFixedSize(size());
 }
 
 MainWindow::~MainWindow()
