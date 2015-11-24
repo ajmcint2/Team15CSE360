@@ -736,7 +736,7 @@ public:
 "#radio_toggle:pressed{\n"
 "background-color: rgb(0, 58, 104);\n"
 "color: white;\n"
-"font: 25 20pt \"Avenir\";\n"
+"font: 25 17pt \"Avenir\";\n"
 "border-radius: 15px;\n"
 "}"));
         Controller->addTab(tab_3, QString());
@@ -942,7 +942,7 @@ public:
 
         retranslateUi(MainWindow);
 
-        Controller->setCurrentIndex(3);
+        Controller->setCurrentIndex(0);
 
 
         QMetaObject::connectSlotsByName(MainWindow);

@@ -41,7 +41,7 @@ color: rgb(25, 25, 25);
      <enum>QTabWidget::Triangular</enum>
     </property>
     <property name="currentIndex">
-     <number>3</number>
+     <number>0</number>
     </property>
     <property name="elideMode">
      <enum>Qt::ElideRight</enum>
@@ -1231,7 +1231,7 @@ border-radius: 15px;
 #radio_toggle:pressed{
 background-color: rgb(0, 58, 104);
 color: white;
-font: 25 20pt &quot;Avenir&quot;;
+font: 25 17pt &quot;Avenir&quot;;
 border-radius: 15px;
 }</string>
       </property>

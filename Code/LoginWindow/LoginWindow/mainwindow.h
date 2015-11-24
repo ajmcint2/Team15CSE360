@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include <QtGui>
 #include <QDebug>
+#include <QVector>
 
 namespace Ui {
 class MainWindow;
@@ -19,11 +20,14 @@ public:
     int speed = 0;
     int fuel = 50;
     int count = 0;
+    int tuner = 0;
     int t = 0;
 
     QTimer *timer;
 
     QTime *time;
+
+    bool rToggle = false;
 
 
 private slots:
@@ -53,8 +57,46 @@ private slots:
 
     void on_radio_slider_actionTriggered(int action);
 
+    void on_radio_toggle_clicked();
+
+    void on_work_button_clicked();
+
 private:
     Ui::MainWindow *ui;
+    class Drive{
+    public:
+        int pFuel;
+        int pSpeed;
+        struct travel{
+            double fwStations[13] = {89.1, 89.7, 90.4, 91.2, 91.4, 92.3, 92.8, 93.9, 94.5, 98.3, 98.1, 101.1, 104.5};
+            double fsStations[9] =  {89.1, 89.7, 91.4, 91.2, 92.7, 94.3, 98.3, 101.2, 106.7};
+            double frStations[8] = {89.1, 89.7, 90.1, 92.2, 93.5, 97.5, 103.7, 107.9};
+            double fbStations[14] = {89.1, 89.7, 90.4, 91.9, 92.3, 92.5, 93.6, 94.3, 98.3, 98.9, 101.2, 103.7, 104.9, 107.9};
+        };
+    }; Drive user;
+    class Phone: public Drive{
+    public:
+        int pCalls;
+        QVector<int> numbers;
+    };
+    class Radio: public Drive{
+    public:
+        QVector<double> fmStations;
+        QVector<double> amStations;
+    };
+    class Stats: public Drive{
+    public:
+        struct trip{
+            int avgSpeed;
+            int maxSpeed;
+            int usedFuel;
+            int numCalls;
+            int Distance;
+            QVector<double> lStations;
+            QVector<int> numDialed;
+        };
+        QVector<trip> trips;
+    };
 };
 
 #endif // MAINWINDOW_H
