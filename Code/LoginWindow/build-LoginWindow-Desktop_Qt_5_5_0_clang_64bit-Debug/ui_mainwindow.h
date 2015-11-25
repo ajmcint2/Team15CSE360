@@ -19,7 +19,6 @@
 #include <QtWidgets/QListWidget>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenuBar>
-#include <QtWidgets/QProgressBar>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QSlider>
 #include <QtWidgets/QStatusBar>
@@ -43,6 +42,7 @@ public:
     QPushButton *school_button;
     QPushButton *store_button;
     QPushButton *beach_button;
+    QLabel *nav_label;
     QWidget *tab_2;
     QPushButton *one;
     QPushButton *two;
@@ -114,7 +114,6 @@ public:
     QLabel *fuel_label;
     QLabel *empty;
     QLabel *empty_2;
-    QProgressBar *progressBar;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -270,7 +269,23 @@ public:
 "font: 25 36pt \"Avenir\";\n"
 "border-radius: 15px;\n"
 "}"));
+        nav_label = new QLabel(tab);
+        nav_label->setObjectName(QStringLiteral("nav_label"));
+        nav_label->setGeometry(QRect(40, 0, 231, 41));
+        nav_label->setStyleSheet(QLatin1String("background-color: transparent;\n"
+"color: white;\n"
+"font: 25 20pt \"Avenir\";"));
+        nav_label->setAlignment(Qt::AlignCenter);
         Controller->addTab(tab, QString());
+        nav_label->raise();
+        pushButton->raise();
+        accel->raise();
+        decel->raise();
+        refillButton->raise();
+        work_button->raise();
+        school_button->raise();
+        store_button->raise();
+        beach_button->raise();
         tab_2 = new QWidget();
         tab_2->setObjectName(QStringLiteral("tab_2"));
         tab_2->setStyleSheet(QLatin1String("#tab_2{\n"
@@ -591,6 +606,11 @@ public:
         radio_fmlist = new QListWidget(tab_3);
         radio_fmlist->setObjectName(QStringLiteral("radio_fmlist"));
         radio_fmlist->setGeometry(QRect(330, 20, 191, 261));
+        radio_fmlist->setStyleSheet(QLatin1String("font: 25 38pt \"Avenir\";\n"
+"color:white;"));
+        radio_fmlist->setTabKeyNavigation(false);
+        radio_fmlist->setTextElideMode(Qt::ElideRight);
+        radio_fmlist->setViewMode(QListView::ListMode);
         radio_slider = new QSlider(tab_3);
         radio_slider->setObjectName(QStringLiteral("radio_slider"));
         radio_slider->setGeometry(QRect(660, 10, 22, 261));
@@ -662,6 +682,8 @@ public:
         radio_amlist = new QListWidget(tab_3);
         radio_amlist->setObjectName(QStringLiteral("radio_amlist"));
         radio_amlist->setGeometry(QRect(330, 20, 191, 261));
+        radio_amlist->setStyleSheet(QLatin1String("font: 25 38pt \"Avenir\";\n"
+"color:white;"));
         radio_db = new QLabel(tab_3);
         radio_db->setObjectName(QStringLiteral("radio_db"));
         radio_db->setGeometry(QRect(650, 290, 41, 31));
@@ -740,14 +762,14 @@ public:
 "border-radius: 15px;\n"
 "}"));
         Controller->addTab(tab_3, QString());
+        radio_amlist->raise();
+        radio_fmlist->raise();
         micBlock_3->raise();
         remove_2->raise();
-        radio_fmlist->raise();
         radio_slider->raise();
         fm_button->raise();
         am_button->raise();
         add_2->raise();
-        radio_amlist->raise();
         radio_db->raise();
         radio_volumelabel->raise();
         radio_label->raise();
@@ -917,10 +939,6 @@ public:
         empty_2->setObjectName(QStringLiteral("empty_2"));
         empty_2->setGeometry(QRect(610, 30, 61, 16));
         empty_2->setStyleSheet(QStringLiteral("background-color: rgb(25, 25, 25);"));
-        progressBar = new QProgressBar(centralwidget);
-        progressBar->setObjectName(QStringLiteral("progressBar"));
-        progressBar->setGeometry(QRect(250, 60, 231, 23));
-        progressBar->setValue(24);
         MainWindow->setCentralWidget(centralwidget);
         empty_2->raise();
         FuelGauge->raise();
@@ -931,7 +949,6 @@ public:
         setfuel_label->raise();
         fuel_label->raise();
         empty->raise();
-        progressBar->raise();
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName(QStringLiteral("menubar"));
         menubar->setGeometry(QRect(0, 0, 724, 22));
@@ -959,6 +976,7 @@ public:
         school_button->setText(QApplication::translate("MainWindow", "school", 0));
         store_button->setText(QApplication::translate("MainWindow", "store", 0));
         beach_button->setText(QApplication::translate("MainWindow", "beach", 0));
+        nav_label->setText(QString());
         Controller->setTabText(Controller->indexOf(tab), QApplication::translate("MainWindow", "Drive", 0));
         one->setText(QApplication::translate("MainWindow", "1", 0));
         two->setText(QApplication::translate("MainWindow", "2", 0));
@@ -989,7 +1007,7 @@ public:
         remove_2->setText(QApplication::translate("MainWindow", "remove", 0));
         radio_db->setText(QApplication::translate("MainWindow", "50", 0));
         radio_volumelabel->setText(QApplication::translate("MainWindow", "volume", 0));
-        radio_label->setText(QApplication::translate("MainWindow", "TextLabel", 0));
+        radio_label->setText(QApplication::translate("MainWindow", "---", 0));
         back_button->setText(QApplication::translate("MainWindow", "back", 0));
         next_button->setText(QApplication::translate("MainWindow", "next", 0));
         radio_toggle->setText(QApplication::translate("MainWindow", "ON", 0));

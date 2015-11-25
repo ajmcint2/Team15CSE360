@@ -20,7 +20,6 @@ public:
     int speed = 0;
     int fuel = 50;
     int count = 0;
-    int tuner = 0;
     int t = 0;
 
     QTimer *timer;
@@ -61,32 +60,29 @@ private slots:
 
     void on_work_button_clicked();
 
+    void on_next_button_clicked();
+
+    void on_add_2_clicked();
+
+    void on_remove_2_clicked();
+
+    void on_radio_amlist_activated(const QModelIndex &index);
+
+    void on_radio_fmlist_activated(const QModelIndex &index);
+
+    void on_back_button_clicked();
+
+    void on_school_button_clicked();
+
+    void on_store_button_clicked();
+
+    void on_beach_button_clicked();
+
 private:
     Ui::MainWindow *ui;
-    class Drive{
+    class Stats{
     public:
-        int pFuel;
-        int pSpeed;
-        struct travel{
-            double fwStations[13] = {89.1, 89.7, 90.4, 91.2, 91.4, 92.3, 92.8, 93.9, 94.5, 98.3, 98.1, 101.1, 104.5};
-            double fsStations[9] =  {89.1, 89.7, 91.4, 91.2, 92.7, 94.3, 98.3, 101.2, 106.7};
-            double frStations[8] = {89.1, 89.7, 90.1, 92.2, 93.5, 97.5, 103.7, 107.9};
-            double fbStations[14] = {89.1, 89.7, 90.4, 91.9, 92.3, 92.5, 93.6, 94.3, 98.3, 98.9, 101.2, 103.7, 104.9, 107.9};
-        };
-    }; Drive user;
-    class Phone: public Drive{
-    public:
-        int pCalls;
-        QVector<int> numbers;
-    };
-    class Radio: public Drive{
-    public:
-        QVector<double> fmStations;
-        QVector<double> amStations;
-    };
-    class Stats: public Drive{
-    public:
-        struct trip{
+        struct stat{
             int avgSpeed;
             int maxSpeed;
             int usedFuel;
@@ -95,8 +91,46 @@ private:
             QVector<double> lStations;
             QVector<int> numDialed;
         };
-        QVector<trip> trips;
-    };
+        stat trip;
+        QVector<stat> trips;
+    }; Stats all;
+    class Drive: public Stats{
+    public:
+        int pFuel;
+        int pSpeed;
+        struct travel{
+            int awStations[8] = {600, 750, 1002, 1023, 1134, 1204, 1230, 1450};
+            int asStations[4] = {750, 1030, 1230, 1267};
+            int arStations[8] = {600, 1023, 1223, 1400, 1325, 1441, 1533, 1776};
+            int abStations[11] = {650, 1002, 1040, 1240, 1270, 1380, 1505, 1600, 1660, 1776, 1800};
+            double fwStations[13] = {89.1, 89.7, 90.4, 91.2, 91.4, 92.3, 92.8, 93.9, 94.5, 98.1, 98.3, 101.1, 104.5};
+            double fsStations[9] =  {89.1, 89.7, 91.2, 91.4, 92.7, 94.3, 98.3, 101.2, 106.7};
+            double frStations[8] = {89.1, 89.7, 90.1, 92.2, 93.5, 97.5, 103.7, 107.9};
+            double fbStations[14] = {89.1, 89.7, 90.4, 91.9, 92.3, 92.5, 93.6, 94.3, 98.3, 98.9, 101.2, 103.7, 104.9, 107.9};
+        };
+        struct location{
+            int distance;
+        };
+        location work;
+        location store;
+        location school;
+        location beach;
+        travel stat;
+    }; Drive user;
+    class Phone: public Drive{
+    public:
+        int pCalls;
+        QVector<int> numbers;
+    }; Phone caller;
+    class Radio: public Drive{
+    public:
+        int fmcount = 0;
+        int amcount = 0;
+        bool fm = true;
+        bool am = false;
+        QVector<double> fmStations;
+        QVector<int> amStations;
+    }; Radio listener;
 };
 
 #endif // MAINWINDOW_H

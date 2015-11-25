@@ -280,6 +280,36 @@ border-radius: 15px;
        <string>beach</string>
       </property>
      </widget>
+     <widget class="QLabel" name="nav_label">
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>0</y>
+        <width>231</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: transparent;
+color: white;
+font: 25 20pt &quot;Avenir&quot;;</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <zorder>nav_label</zorder>
+     <zorder>pushButton</zorder>
+     <zorder>accel</zorder>
+     <zorder>decel</zorder>
+     <zorder>refillButton</zorder>
+     <zorder>work_button</zorder>
+     <zorder>school_button</zorder>
+     <zorder>store_button</zorder>
+     <zorder>beach_button</zorder>
     </widget>
     <widget class="QWidget" name="tab_2">
      <property name="styleSheet">
@@ -941,6 +971,19 @@ background-color: rgb(25, 25, 25);
         <height>261</height>
        </rect>
       </property>
+      <property name="styleSheet">
+       <string notr="true">font: 25 38pt &quot;Avenir&quot;;
+color:white;</string>
+      </property>
+      <property name="tabKeyNavigation">
+       <bool>false</bool>
+      </property>
+      <property name="textElideMode">
+       <enum>Qt::ElideRight</enum>
+      </property>
+      <property name="viewMode">
+       <enum>QListView::ListMode</enum>
+      </property>
      </widget>
      <widget class="QSlider" name="radio_slider">
       <property name="geometry">
@@ -1076,6 +1119,10 @@ border-radius: 15px;
         <height>261</height>
        </rect>
       </property>
+      <property name="styleSheet">
+       <string notr="true">font: 25 38pt &quot;Avenir&quot;;
+color:white;</string>
+      </property>
      </widget>
      <widget class="QLabel" name="radio_db">
       <property name="geometry">
@@ -1149,7 +1196,7 @@ border-radius: 15px;
 </string>
       </property>
       <property name="text">
-       <string>TextLabel</string>
+       <string>---</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
@@ -1239,14 +1286,14 @@ border-radius: 15px;
        <string>ON</string>
       </property>
      </widget>
+     <zorder>radio_amlist</zorder>
+     <zorder>radio_fmlist</zorder>
      <zorder>micBlock_3</zorder>
      <zorder>remove_2</zorder>
-     <zorder>radio_fmlist</zorder>
      <zorder>radio_slider</zorder>
      <zorder>fm_button</zorder>
      <zorder>am_button</zorder>
      <zorder>add_2</zorder>
-     <zorder>radio_amlist</zorder>
      <zorder>radio_db</zorder>
      <zorder>radio_volumelabel</zorder>
      <zorder>radio_label</zorder>
@@ -1701,19 +1748,6 @@ font: &quot;Avenir&quot;;
      <string/>
     </property>
    </widget>
-   <widget class="QProgressBar" name="progressBar">
-    <property name="geometry">
-     <rect>
-      <x>250</x>
-      <y>60</y>
-      <width>231</width>
-      <height>23</height>
-     </rect>
-    </property>
-    <property name="value">
-     <number>24</number>
-    </property>
-   </widget>
    <zorder>empty_2</zorder>
    <zorder>FuelGauge</zorder>
    <zorder>Speedometer</zorder>
@@ -1723,7 +1757,6 @@ font: &quot;Avenir&quot;;
    <zorder>setfuel_label</zorder>
    <zorder>fuel_label</zorder>
    <zorder>empty</zorder>
-   <zorder>progressBar</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">

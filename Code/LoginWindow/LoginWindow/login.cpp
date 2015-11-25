@@ -4,7 +4,6 @@
 #include <QtSql>
 #include <QSqlDatabase>
 #include <QSqlQuery>
-#include <sqlite3.h>
 
 Login::Login(QWidget *parent) :
     QMainWindow(parent),
