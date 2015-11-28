@@ -27,6 +27,7 @@ public:
     bool rToggle = false;
 
     QTimer *timer;
+    QTimer *timer2;
     QTime *time;
 
     QString currentTime;

@@ -24,9 +24,8 @@ MainWindow::MainWindow(QWidget *parent) :
 
     connect(timer, SIGNAL(timeout()), this, SLOT(on_call_clicked()));   //set up signal to start timer
 
-    QTimer *timer2 = new QTimer(this);
+    timer2 = new QTimer(this);
     connect(timer2, SIGNAL(timeout()), this, SLOT(update()));
-    timer2->start(10000);
 
     ui->vol_slider->setValue(50);   //set sliders at value
     ui->mic_slider->setValue(50);
@@ -139,12 +138,14 @@ void MainWindow::on_pushButton_clicked()
         populate();
         popFm();
         popAm();
+        timer2->start(10000);
         update();
     }
     else{   //if the car is stopped, close application and save data
         if (speed == 0){
             Login connection;
             QString end = QTime::currentTime().toString();
+            QString date = QDate::currentDate().toString();
             int avg_Speed, max_Speed, num_Calls, dis, fuel_Used;
             calcAverage();
             calcMax();
@@ -156,8 +157,8 @@ void MainWindow::on_pushButton_clicked()
 
             connection.openDb();
             QSqlQuery qry;
-            qry.prepare("INSERT INTO Stats (average, max, fuel_used, fuel_left, num_calls, user_id, session_start, session_end)"
-                        "VALUES (:average, :max, :fuel_used, :fuel_left, :num_calls, :user_id, :session_start, :session_end)");
+            qry.prepare("INSERT INTO Stats (average, max, fuel_used, fuel_left, num_calls, user_id, session_start, session_end, session_date)"
+                        "VALUES (:average, :max, :fuel_used, :fuel_left, :num_calls, :user_id, :session_start, :session_end, :session_date)");
             qry.bindValue(":average", all.trip.avgSpeed);
             qry.bindValue(":max", all.trip.maxSpeed);
             qry.bindValue(":fuel_used", user.pFuel);
@@ -166,13 +167,16 @@ void MainWindow::on_pushButton_clicked()
             qry.bindValue(":user_id", user_id);
             qry.bindValue(":session_start", start);
             qry.bindValue(":session_end", end);
+            qry.bindValue(":session_date", date);
             if (qry.exec()){
-                QMessageBox::critical(this, tr("SAVING"), tr("Successfully saved data."));
+                qDebug() << "Saved";
                 connection.dbClose();
                 close();
             }
             else {
+                qDebug() << "Error";
                  connection.dbClose();
+                 close();
             }
         }
     }
