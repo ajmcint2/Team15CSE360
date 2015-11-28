@@ -6,6 +6,8 @@
 #include <QtDebug>
 #include <QFileInfo>
 #include <QSql>
+#include <QDesktopServices>
+#include <QDir>
 #include "mainwindow.h"
 
 namespace Ui {
@@ -19,12 +21,13 @@ class Login : public QMainWindow
 public:
     QSqlDatabase db;
     QString username;
-
+    QDir dir;
+    QString path;
     bool openDb(){
         db = QSqlDatabase::addDatabase("QSQLITE");
-        db.setDatabaseName("/Users/alexmcintosh/Team15CSE360/Code/Database/AIOCS.sqlite");
+        db.setDatabaseName(QDir::homePath()+"/Desktop/AIOCS.sqlite");
         if(db.open()){
-            qDebug() << ("Please enter key");
+            qDebug() << "App path: " << QDir::homePath()+"/Desktop/AIOCS.sqlite";
             return true;
         }
         else{
