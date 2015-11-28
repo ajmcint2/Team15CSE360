@@ -1,5 +1,10 @@
-DROP TABLE IF EXISTS "users";
-CREATE TABLE "users" ("username" TEXT PRIMARY KEY  NOT NULL , "password" TEXT);
-INSERT INTO "users" VALUES('alex','555');
-INSERT INTO "users" VALUES('francis','000');
-INSERT INTO "users" VALUES('reis','111');
+DROP TABLE IF EXISTS "CallDurations";
+CREATE TABLE "CallDurations" ("user_id" int(10) PRIMARY KEY  NOT NULL  DEFAULT (null) ,"duration" varchar(30) NOT NULL );
+DROP TABLE IF EXISTS "Drivers";
+CREATE TABLE "Drivers" ("username" VARCHAR PRIMARY KEY  NOT NULL , "password" VARCHAR);
+DROP TABLE IF EXISTS "NumbersDialed";
+CREATE TABLE "NumbersDialed" ("user_id" int(10) PRIMARY KEY  NOT NULL  DEFAULT (null) ,"phone_number" varchar(30) NOT NULL );
+DROP TABLE IF EXISTS "StationsListenedTo";
+CREATE TABLE "StationsListenedTo" ("user_id" int(10) PRIMARY KEY  NOT NULL  DEFAULT (null) ,"station_name" varchar(30) NOT NULL );
+DROP TABLE IF EXISTS "Stats";
+CREATE TABLE "Stats" ("average" INTEGER, "max" INTEGER, "distance" BOOL, "fuel" INTEGER, "num_calls" INTEGER);

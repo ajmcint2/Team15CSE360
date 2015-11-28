@@ -5,6 +5,7 @@
 #include <QtGui>
 #include <QDebug>
 #include <QVector>
+#include "login.h"
 
 namespace Ui {
 class MainWindow;
@@ -17,19 +18,31 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
+
+public:
     int speed = 0;
-    int fuel = 50;
+    int fuel = 100;
     int count = 0;
     int t = 0;
+    bool rToggle = false;
 
     QTimer *timer;
-
     QTime *time;
 
-    bool rToggle = false;
+    QString currentTime;
+    QString start = QTime::currentTime().toString();
+    QString user_id;
+    void passUser(const QString& name);
 
 
 private slots:
+    void update();
+    void populate();
+    void popFm();
+    void popAm();
+    void setFuel();
+    void calcAverage();
+    void calcMax();
     void on_pushButton_clicked();
     void on_accel_pressed();
     void on_decel_pressed();
@@ -53,30 +66,22 @@ private slots:
     void on_remove_clicked();
     void on_fm_button_clicked();
     void on_am_button_clicked();
-
     void on_radio_slider_actionTriggered(int action);
-
     void on_radio_toggle_clicked();
-
     void on_work_button_clicked();
-
     void on_next_button_clicked();
-
     void on_add_2_clicked();
-
     void on_remove_2_clicked();
-
     void on_radio_amlist_activated(const QModelIndex &index);
-
     void on_radio_fmlist_activated(const QModelIndex &index);
-
     void on_back_button_clicked();
-
     void on_school_button_clicked();
-
     void on_store_button_clicked();
-
     void on_beach_button_clicked();
+    void on_decel_released();
+    void on_Overall_clicked();
+    void on_Phone_clicked();
+    void on_Radio_clicked();
 
 private:
     Ui::MainWindow *ui;
@@ -96,8 +101,8 @@ private:
     }; Stats all;
     class Drive: public Stats{
     public:
-        int pFuel;
-        int pSpeed;
+        int pFuel = 0;
+        int pSpeed = 0;
         struct travel{
             int awStations[8] = {600, 750, 1002, 1023, 1134, 1204, 1230, 1450};
             int asStations[4] = {750, 1030, 1230, 1267};
@@ -109,17 +114,15 @@ private:
             double fbStations[14] = {89.1, 89.7, 90.4, 91.9, 92.3, 92.5, 93.6, 94.3, 98.3, 98.9, 101.2, 103.7, 104.9, 107.9};
         };
         struct location{
-            int distance;
+            int distance = 0;
         };
-        location work;
-        location store;
-        location school;
-        location beach;
+        location place;
         travel stat;
+        QVector<int> allSpeed;
     }; Drive user;
     class Phone: public Drive{
     public:
-        int pCalls;
+        int pCalls = 0;
         QVector<int> numbers;
     }; Phone caller;
     class Radio: public Drive{

@@ -1,0 +1,2 @@
+the row id will not signify number of trips.
+Each time the driver id is found, number of trips will increment

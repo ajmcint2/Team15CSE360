@@ -15,7 +15,6 @@
 #include <QtWidgets/QButtonGroup>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
-#include <QtWidgets/QListView>
 #include <QtWidgets/QListWidget>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenuBar>
@@ -23,6 +22,7 @@
 #include <QtWidgets/QSlider>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QTabWidget>
+#include <QtWidgets/QTableView>
 #include <QtWidgets/QTextBrowser>
 #include <QtWidgets/QWidget>
 
@@ -88,24 +88,10 @@ public:
     QPushButton *next_button;
     QPushButton *radio_toggle;
     QWidget *tab_4;
-    QTextBrowser *avgDisplay;
-    QTextBrowser *fuelconDisplay;
-    QTextBrowser *maxspeedDisplay;
-    QTextBrowser *callsDisplay;
-    QTextBrowser *distanceDisplay;
-    QListView *radio_stat;
-    QListView *phone_stat;
-    QLabel *stat_label;
-    QLabel *stat_label_2;
-    QLabel *stat_label_3;
-    QLabel *stat_label_4;
-    QLabel *stat_label_5;
-    QListView *radio_stat_2;
-    QLabel *stat_label_6;
-    QLabel *stat_label_7;
-    QLabel *stat_label_8;
-    QListView *listView;
-    QLabel *stat_label_9;
+    QTableView *tableView;
+    QPushButton *Overall;
+    QPushButton *Phone;
+    QPushButton *Radio;
     QLabel *setspeed_label;
     QTextBrowser *Speedometer;
     QLabel *speed_label;
@@ -114,6 +100,7 @@ public:
     QLabel *fuel_label;
     QLabel *empty;
     QLabel *empty_2;
+    QLabel *Warning;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -781,110 +768,59 @@ public:
         tab_4->setStyleSheet(QLatin1String("#tab_4{\n"
 "background-color: rgb(25, 25, 25);\n"
 "}"));
-        avgDisplay = new QTextBrowser(tab_4);
-        avgDisplay->setObjectName(QStringLiteral("avgDisplay"));
-        avgDisplay->setGeometry(QRect(220, 170, 91, 61));
-        avgDisplay->setStyleSheet(QStringLiteral("border-radius: 15px;"));
-        fuelconDisplay = new QTextBrowser(tab_4);
-        fuelconDisplay->setObjectName(QStringLiteral("fuelconDisplay"));
-        fuelconDisplay->setGeometry(QRect(490, 250, 91, 61));
-        fuelconDisplay->setStyleSheet(QStringLiteral("border-radius: 15px;"));
-        maxspeedDisplay = new QTextBrowser(tab_4);
-        maxspeedDisplay->setObjectName(QStringLiteral("maxspeedDisplay"));
-        maxspeedDisplay->setGeometry(QRect(310, 250, 91, 61));
-        maxspeedDisplay->setStyleSheet(QStringLiteral("border-radius: 15px;"));
-        callsDisplay = new QTextBrowser(tab_4);
-        callsDisplay->setObjectName(QStringLiteral("callsDisplay"));
-        callsDisplay->setGeometry(QRect(580, 170, 91, 61));
-        callsDisplay->setStyleSheet(QStringLiteral("border-radius: 15px;"));
-        distanceDisplay = new QTextBrowser(tab_4);
-        distanceDisplay->setObjectName(QStringLiteral("distanceDisplay"));
-        distanceDisplay->setGeometry(QRect(400, 170, 91, 61));
-        distanceDisplay->setStyleSheet(QStringLiteral("border-radius: 15px;"));
-        radio_stat = new QListView(tab_4);
-        radio_stat->setObjectName(QStringLiteral("radio_stat"));
-        radio_stat->setGeometry(QRect(360, 10, 151, 141));
-        phone_stat = new QListView(tab_4);
-        phone_stat->setObjectName(QStringLiteral("phone_stat"));
-        phone_stat->setGeometry(QRect(530, 10, 151, 141));
-        stat_label = new QLabel(tab_4);
-        stat_label->setObjectName(QStringLiteral("stat_label"));
-        stat_label->setGeometry(QRect(220, 230, 101, 16));
-        stat_label->setStyleSheet(QLatin1String("background-color: transparent;\n"
-"color: rgb(255, 255, 255);\n"
-"font: 25 12pt \"Avenir\";\n"
-"\n"
-""));
-        stat_label_2 = new QLabel(tab_4);
-        stat_label_2->setObjectName(QStringLiteral("stat_label_2"));
-        stat_label_2->setGeometry(QRect(320, 310, 71, 16));
-        stat_label_2->setStyleSheet(QLatin1String("background-color: transparent;\n"
-"color: rgb(255, 255, 255);\n"
-"font: 25 13pt \"Avenir\";\n"
-"\n"
-""));
-        stat_label_3 = new QLabel(tab_4);
-        stat_label_3->setObjectName(QStringLiteral("stat_label_3"));
-        stat_label_3->setGeometry(QRect(410, 230, 61, 16));
-        stat_label_3->setStyleSheet(QLatin1String("background-color: transparent;\n"
-"color: rgb(255, 255, 255);\n"
-"font: 25 13pt \"Avenir\";\n"
-"\n"
-""));
-        stat_label_4 = new QLabel(tab_4);
-        stat_label_4->setObjectName(QStringLiteral("stat_label_4"));
-        stat_label_4->setGeometry(QRect(500, 310, 81, 16));
-        stat_label_4->setStyleSheet(QLatin1String("background-color: transparent;\n"
-"color: rgb(255, 255, 255);\n"
-"font: 25 13pt \"Avenir\";\n"
-"\n"
-""));
-        stat_label_5 = new QLabel(tab_4);
-        stat_label_5->setObjectName(QStringLiteral("stat_label_5"));
-        stat_label_5->setGeometry(QRect(590, 230, 71, 16));
-        stat_label_5->setStyleSheet(QLatin1String("background-color: transparent;\n"
-"color: rgb(255, 255, 255);\n"
-"font: 25 13pt \"Avenir\";\n"
-"\n"
-""));
-        radio_stat_2 = new QListView(tab_4);
-        radio_stat_2->setObjectName(QStringLiteral("radio_stat_2"));
-        radio_stat_2->setGeometry(QRect(190, 10, 151, 141));
-        stat_label_6 = new QLabel(tab_4);
-        stat_label_6->setObjectName(QStringLiteral("stat_label_6"));
-        stat_label_6->setGeometry(QRect(190, 150, 151, 16));
-        stat_label_6->setStyleSheet(QLatin1String("background-color: transparent;\n"
-"color: rgb(255, 255, 255);\n"
-"font: 25 13pt \"Avenir\";\n"
-"\n"
-""));
-        stat_label_7 = new QLabel(tab_4);
-        stat_label_7->setObjectName(QStringLiteral("stat_label_7"));
-        stat_label_7->setGeometry(QRect(380, 150, 111, 16));
-        stat_label_7->setStyleSheet(QLatin1String("background-color: transparent;\n"
-"color: rgb(255, 255, 255);\n"
-"font: 25 13pt \"Avenir\";\n"
-"\n"
-""));
-        stat_label_8 = new QLabel(tab_4);
-        stat_label_8->setObjectName(QStringLiteral("stat_label_8"));
-        stat_label_8->setGeometry(QRect(540, 150, 131, 16));
-        stat_label_8->setStyleSheet(QLatin1String("background-color: transparent;\n"
-"color: rgb(255, 255, 255);\n"
-"font: 25 13pt \"Avenir\";\n"
-"\n"
-""));
-        listView = new QListView(tab_4);
-        listView->setObjectName(QStringLiteral("listView"));
-        listView->setGeometry(QRect(10, 30, 161, 291));
-        stat_label_9 = new QLabel(tab_4);
-        stat_label_9->setObjectName(QStringLiteral("stat_label_9"));
-        stat_label_9->setGeometry(QRect(60, 10, 51, 16));
-        stat_label_9->setStyleSheet(QLatin1String("background-color: transparent;\n"
-"color: rgb(255, 255, 255);\n"
+        tableView = new QTableView(tab_4);
+        tableView->setObjectName(QStringLiteral("tableView"));
+        tableView->setGeometry(QRect(80, 10, 561, 261));
+        tableView->setStyleSheet(QLatin1String("color: rgb(0, 70, 122);\n"
+"font-size: 12pt;"));
+        Overall = new QPushButton(tab_4);
+        Overall->setObjectName(QStringLiteral("Overall"));
+        Overall->setGeometry(QRect(120, 280, 121, 32));
+        Overall->setStyleSheet(QLatin1String("#Overall{\n"
+"background-color: rgb(37, 37, 37);\n"
+"color: white;\n"
 "font: 25 20pt \"Avenir\";\n"
+"border-radius: 15px;\n"
+"}\n"
 "\n"
-""));
+"#Overall:pressed{\n"
+"background-color: rgb(27, 27, 27);\n"
+"color: white;\n"
+"font: 25 20pt \"Avenir\";\n"
+"border-radius: 15px;\n"
+"}"));
+        Phone = new QPushButton(tab_4);
+        Phone->setObjectName(QStringLiteral("Phone"));
+        Phone->setGeometry(QRect(290, 280, 131, 32));
+        Phone->setStyleSheet(QLatin1String("#Phone{\n"
+"background-color: rgb(37, 37, 37);\n"
+"color: white;\n"
+"font: 25 20pt \"Avenir\";\n"
+"border-radius: 15px;\n"
+"}\n"
+"\n"
+"#Phone:pressed{\n"
+"background-color: rgb(27, 27, 27);\n"
+"color: white;\n"
+"font: 25 20pt \"Avenir\";\n"
+"border-radius: 15px;\n"
+"}"));
+        Radio = new QPushButton(tab_4);
+        Radio->setObjectName(QStringLiteral("Radio"));
+        Radio->setGeometry(QRect(470, 280, 131, 32));
+        Radio->setStyleSheet(QLatin1String("#Radio{\n"
+"background-color: rgb(37, 37, 37);\n"
+"color: white;\n"
+"font: 25 20pt \"Avenir\";\n"
+"border-radius: 15px;\n"
+"}\n"
+"\n"
+"#Radio:pressed{\n"
+"background-color: rgb(27, 27, 27);\n"
+"color: white;\n"
+"font: 25 20pt \"Avenir\";\n"
+"border-radius: 15px;\n"
+"}"));
         Controller->addTab(tab_4, QString());
         setspeed_label = new QLabel(centralwidget);
         setspeed_label->setObjectName(QStringLiteral("setspeed_label"));
@@ -939,6 +875,13 @@ public:
         empty_2->setObjectName(QStringLiteral("empty_2"));
         empty_2->setGeometry(QRect(610, 30, 61, 16));
         empty_2->setStyleSheet(QStringLiteral("background-color: rgb(25, 25, 25);"));
+        Warning = new QLabel(centralwidget);
+        Warning->setObjectName(QStringLiteral("Warning"));
+        Warning->setGeometry(QRect(230, 50, 261, 51));
+        Warning->setStyleSheet(QLatin1String("color: white;\n"
+"background-color: transparent;\n"
+"font: 25 25pt \"Avenir\""));
+        Warning->setAlignment(Qt::AlignCenter);
         MainWindow->setCentralWidget(centralwidget);
         empty_2->raise();
         FuelGauge->raise();
@@ -949,6 +892,7 @@ public:
         setfuel_label->raise();
         fuel_label->raise();
         empty->raise();
+        Warning->raise();
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName(QStringLiteral("menubar"));
         menubar->setGeometry(QRect(0, 0, 724, 22));
@@ -959,7 +903,7 @@ public:
 
         retranslateUi(MainWindow);
 
-        Controller->setCurrentIndex(0);
+        Controller->setCurrentIndex(2);
 
 
         QMetaObject::connectSlotsByName(MainWindow);
@@ -975,7 +919,7 @@ public:
         work_button->setText(QApplication::translate("MainWindow", "work", 0));
         school_button->setText(QApplication::translate("MainWindow", "school", 0));
         store_button->setText(QApplication::translate("MainWindow", "store", 0));
-        beach_button->setText(QApplication::translate("MainWindow", "beach", 0));
+        beach_button->setText(QApplication::translate("MainWindow", "cruise", 0));
         nav_label->setText(QString());
         Controller->setTabText(Controller->indexOf(tab), QApplication::translate("MainWindow", "Drive", 0));
         one->setText(QApplication::translate("MainWindow", "1", 0));
@@ -1012,22 +956,17 @@ public:
         next_button->setText(QApplication::translate("MainWindow", "next", 0));
         radio_toggle->setText(QApplication::translate("MainWindow", "ON", 0));
         Controller->setTabText(Controller->indexOf(tab_3), QApplication::translate("MainWindow", "Radio", 0));
-        stat_label->setText(QApplication::translate("MainWindow", "AVERAGE SPEED", 0));
-        stat_label_2->setText(QApplication::translate("MainWindow", "MAX SPEED", 0));
-        stat_label_3->setText(QApplication::translate("MainWindow", "DISTANCE", 0));
-        stat_label_4->setText(QApplication::translate("MainWindow", "TOTAL FUEL", 0));
-        stat_label_5->setText(QApplication::translate("MainWindow", "NUM CALLS", 0));
-        stat_label_6->setText(QApplication::translate("MainWindow", "STATIONS LISTENED TO", 0));
-        stat_label_7->setText(QApplication::translate("MainWindow", "NUMBERS DIALED", 0));
-        stat_label_8->setText(QApplication::translate("MainWindow", "PERIODS OF CALLS", 0));
-        stat_label_9->setText(QApplication::translate("MainWindow", "TRIPS", 0));
+        Overall->setText(QApplication::translate("MainWindow", "Overview", 0));
+        Phone->setText(QApplication::translate("MainWindow", "Phone", 0));
+        Radio->setText(QApplication::translate("MainWindow", "Radio", 0));
         Controller->setTabText(Controller->indexOf(tab_4), QApplication::translate("MainWindow", "Stats", 0));
         setspeed_label->setText(QApplication::translate("MainWindow", "0", 0));
         speed_label->setText(QApplication::translate("MainWindow", "SPEED", 0));
-        setfuel_label->setText(QApplication::translate("MainWindow", "50", 0));
+        setfuel_label->setText(QApplication::translate("MainWindow", "100", 0));
         fuel_label->setText(QApplication::translate("MainWindow", "FUEL", 0));
         empty->setText(QString());
         empty_2->setText(QString());
+        Warning->setText(QString());
     } // retranslateUi
 
 };

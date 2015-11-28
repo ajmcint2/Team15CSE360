@@ -1,5 +1,11 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include <QMessageBox>
+#include <QSqlQuery>
+#include<QSqlQueryModel>
+#include <QSqlRecord>
+#include <QHeaderView>
+#include <QVariant>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -7,25 +13,120 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
+    Login connection;
+    if(!connection.openDb()){
+        ui->Warning->setText("Error. Data will not be saved");
+    }
+
     time = new QTime(); //intialize timer for call
     time->setHMS(0,0,0,0);
     timer = new QTimer(this);
 
     connect(timer, SIGNAL(timeout()), this, SLOT(on_call_clicked()));   //set up signal to start timer
 
+    QTimer *timer2 = new QTimer(this);
+    connect(timer2, SIGNAL(timeout()), this, SLOT(update()));
+    timer2->start(10000);
+
     ui->vol_slider->setValue(50);   //set sliders at value
     ui->mic_slider->setValue(50);
     ui->radio_slider->setValue(0);
     ui->Controller->setCurrentIndex(0); //start GUI at Drive tab
+    ui->pushButton->setDisabled(true);
+    ui->accel->setDisabled(true);
+    ui->decel->setDisabled(true);
 
+    ui->nav_label->setText("Lets go somewhere:");
     ui->radio_amlist->hide();   //hide am timer so that fm_list is displayed upon startup
 
+    setFuel();
     setFixedSize(size());   //restricts resize
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
+}
+
+void MainWindow::passUser(const QString &name){
+    user_id = name;
+    ui->Warning->setText("Hello " + name);
+}
+
+void MainWindow::update(){
+    fuel--;
+    ui->setfuel_label->setText(QString::number(fuel));
+    user.pFuel++;
+}
+
+void MainWindow::populate(){
+    Login connection;
+    connection.openDb();
+    QSqlQuery qry;
+    qry.prepare("SELECT phone_number FROM ContactList WHERE user_id ='"+user_id+"'");
+    qry.exec();
+    while(qry.next()){
+        QString number = qry.value(0).toString();
+        ui->contactList->addItem(number);
+    }
+    connection.dbClose();
+}
+
+void MainWindow::popFm(){
+    Login connection;
+    connection.openDb();
+    QSqlQuery qry;
+    qry.prepare("SELECT station_name FROM StationFMList WHERE user_id ='" +user_id+"'");
+    qry.exec();
+    while(qry.next()){
+        QString station = qry.value(0).toString();
+        ui->radio_fmlist->addItem(station);
+    }
+    connection.dbClose();
+}
+
+void MainWindow::popAm(){
+    Login connection;
+    connection.openDb();
+    QSqlQuery qry;
+    qry.prepare("SELECT station_name FROM StationAMList WHERE user_id ='" + user_id +"'");
+    qry.exec();
+    while(qry.next()){
+        QString station = qry.value(0).toString();
+        ui->radio_amlist->addItem(station);
+    }
+    connection.dbClose();
+}
+
+void MainWindow::setFuel(){
+    Login connection;
+    connection.openDb();
+    QSqlQuery qry;
+    qry.prepare("SELECT fuel_left FROM Stats");
+    qry.exec();
+    while(qry.next()){
+        fuel = qry.value(0).toInt();
+        ui->setfuel_label->setText(QString::number(fuel));
+    }
+    connection.dbClose();
+}
+
+void MainWindow::calcAverage(){
+    int temp = 0;
+    for(int i = 0; i < user.allSpeed.size(); i++){
+        temp += user.allSpeed[i];
+    }
+    all.trip.avgSpeed = temp/user.allSpeed.size();
+}
+
+void MainWindow::calcMax(){
+    int max = 0;
+    for(int i = 0; i < user.allSpeed.size(); i++){
+        if (max < user.allSpeed[i]){
+            max = user.allSpeed[i];
+        }
+    }
+    all.trip.maxSpeed = max;
 }
 
 //starts engine or turns off car
@@ -35,10 +136,44 @@ void MainWindow::on_pushButton_clicked()
     if(ui->pushButton->text() == "START"){
         ui->setfuel_label->setText(QString::number(fuel));
         ui->pushButton->setText("STOP");
+        populate();
+        popFm();
+        popAm();
+        update();
     }
     else{   //if the car is stopped, close application and save data
         if (speed == 0){
-            close();    //close application after stopping car
+            Login connection;
+            QString end = QTime::currentTime().toString();
+            int avg_Speed, max_Speed, num_Calls, dis, fuel_Used;
+            calcAverage();
+            calcMax();
+            avg_Speed = all.trip.avgSpeed;
+            num_Calls = caller.pCalls;
+            max_Speed = all.trip.maxSpeed;
+            dis = all.trip.Distance;
+            fuel_Used = fuel;
+
+            connection.openDb();
+            QSqlQuery qry;
+            qry.prepare("INSERT INTO Stats (average, max, fuel_used, fuel_left, num_calls, user_id, session_start, session_end)"
+                        "VALUES (:average, :max, :fuel_used, :fuel_left, :num_calls, :user_id, :session_start, :session_end)");
+            qry.bindValue(":average", all.trip.avgSpeed);
+            qry.bindValue(":max", all.trip.maxSpeed);
+            qry.bindValue(":fuel_used", user.pFuel);
+            qry.bindValue(":fuel_left", fuel);
+            qry.bindValue(":num_calls", caller.pCalls);
+            qry.bindValue(":user_id", user_id);
+            qry.bindValue(":session_start", start);
+            qry.bindValue(":session_end", end);
+            if (qry.exec()){
+                QMessageBox::critical(this, tr("SAVING"), tr("Successfully saved data."));
+                connection.dbClose();
+                close();
+            }
+            else {
+                 connection.dbClose();
+            }
         }
     }
 }
@@ -54,6 +189,7 @@ void MainWindow::on_accel_pressed()
             ui->accel->setAutoRepeat(true); //checks of button is held
     }
     speed = temp;   //set speed to temp
+    user.allSpeed.push_back(speed);
 }
 
 //decreases speed while button is held to min speed of 0
@@ -192,6 +328,21 @@ void MainWindow::on_zero_clicked()
 //end phone call
 void MainWindow::on_X_clicked()
 {
+    if (count == 10){
+        Login connection;
+        connection.openDb();
+        QSqlQuery qry;
+        qry.prepare("INSERT INTO NumbersDialed (user_id, phone_number, time, duration)"
+                    "VALUES (:user_id, :phone_number, :time, :duration)");
+        qry.bindValue(":user_id", user_id);
+        qry.bindValue(":phone_number", ui->dial_display->text());
+        qry.bindValue(":time", currentTime);
+        qry.bindValue(":duration", ui->call_time->text());
+        qry.exec();
+        connection.dbClose();
+        caller.pCalls++;
+    }
+
     t = 0;
     count = 0;
     ui->dial_display->setText("");  //clear display
@@ -203,6 +354,8 @@ void MainWindow::on_X_clicked()
 void MainWindow::on_call_clicked()
 {
     if (count == 10){   //check if there are enough numbers inorder to call
+
+        currentTime = QTime::currentTime().toString();
         //stops radio from playing during phone call
         rToggle = true;
         ui->radio_toggle->setText("ON");
@@ -252,6 +405,16 @@ void MainWindow::on_add_clicked()
         if (count == 10){
             ui->contactList->addItem(newNumber);
             ui->contactError->setText("");
+
+            Login connection;
+            connection.openDb();
+            QSqlQuery qry;
+            qry.prepare("INSERT INTO ContactList (user_id, phone_number)"
+                        "VALUES (:user_id, :phone_number)");
+            qry.bindValue(":user_id", user_id);
+            qry.bindValue(":phone_number", ui->dial_display->text());
+            qry.exec();
+            connection.dbClose();
         }
     }
 }
@@ -267,6 +430,14 @@ void MainWindow::on_contactList_activated(const QModelIndex &index)
 //remove number from contact list
 void MainWindow::on_remove_clicked()
 {
+    Login connection;
+    connection.openDb();
+    QSqlQuery qry;
+    qry.prepare("DELETE FROM ContactList WHERE user_id='" + user_id +
+                "' AND phone_number ='" + ui->contactList->currentItem()->text() + "'");
+    qry.exec();
+    connection.dbClose();
+
     ui->contactList->takeItem(ui->contactList->row(ui->contactList->currentItem()));
 }
 
@@ -327,6 +498,10 @@ void MainWindow::on_radio_toggle_clicked()
 
 void MainWindow::on_work_button_clicked()
 {
+    user.place.distance = 50;
+    ui->pushButton->setDisabled(false);
+    ui->accel->setDisabled(false);
+    ui->decel->setDisabled(false);
     for (int i = 0; i < 13; i++){
         listener.fmStations.push_back(user.stat.fwStations[i]); //populate fm stations
     }
@@ -345,6 +520,10 @@ void MainWindow::on_work_button_clicked()
 
 void MainWindow::on_school_button_clicked()
 {
+    user.place.distance = 30;
+    ui->pushButton->setDisabled(false);
+    ui->accel->setDisabled(false);
+    ui->decel->setDisabled(false);
     for (int i = 0; i < 9; i++){
         listener.fmStations.push_back(user.stat.fsStations[i]); //populate fm stations
     }
@@ -363,6 +542,10 @@ void MainWindow::on_school_button_clicked()
 
 void MainWindow::on_store_button_clicked()
 {
+    user.place.distance = 35;
+    ui->pushButton->setDisabled(false);
+    ui->accel->setDisabled(false);
+    ui->decel->setDisabled(false);
     for (int i = 0; i < 8; i++){
         listener.fmStations.push_back(user.stat.frStations[i]); //populate fm stations
     }
@@ -381,6 +564,9 @@ void MainWindow::on_store_button_clicked()
 
 void MainWindow::on_beach_button_clicked()
 {
+    ui->pushButton->setDisabled(false);
+    ui->accel->setDisabled(false);
+    ui->decel->setDisabled(false);
     for (int i = 0; i < 14; i++){
         listener.fmStations.push_back(user.stat.fbStations[i]); //populate fm stations
     }
@@ -394,7 +580,7 @@ void MainWindow::on_beach_button_clicked()
     ui->school_button->setEnabled(false);
     ui->beach_button->setEnabled(false);
     ui->store_button->setEnabled(false);
-    ui->nav_label->setText("heading to: " + ui->beach_button->text());
+    ui->nav_label->setText("cruise mode");
 }
 
 void MainWindow::on_next_button_clicked()
@@ -408,6 +594,7 @@ void MainWindow::on_next_button_clicked()
            }
            listener.fmcount++;
            ui->radio_label->setText(QString::number(listener.fmStations[listener.fmcount]));
+           currentTime = QTime::currentTime().toString();
        }
        else{
            if (listener.amcount == listener.amStations.size()-1){
@@ -415,7 +602,18 @@ void MainWindow::on_next_button_clicked()
            }
            listener.amcount++;
            ui->radio_label->setText(QString::number(listener.amStations[listener.amcount]));
+           currentTime = QTime::currentTime().toString();
        }
+       Login connection;
+       connection.openDb();
+       QSqlQuery qry;
+       qry.prepare("INSERT INTO StationsListenedTo (user_id, station_name, time)"
+                   "VALUES (:user_id, :station_name, :time)");
+       qry.bindValue(":user_id", user_id);
+       qry.bindValue(":station_name", ui->radio_label->text());
+       qry.bindValue(":time", currentTime);
+       qry.exec();
+       connection.dbClose();
        break;
     }
 }
@@ -460,6 +658,16 @@ void MainWindow::on_add_2_clicked()
             }
             if (!found){    //add newnumber if it doesnt exist in list
                     ui->radio_fmlist->addItem(newNumber);
+
+                    Login connection;
+                    connection.openDb();
+                    QSqlQuery qry;
+                    qry.prepare("INSERT INTO StationFMList (user_id, station_name)"
+                                "VALUES (:user_id, :station_name)");
+                    qry.bindValue(":user_id", user_id);
+                    qry.bindValue(":station_name", newNumber);
+                    qry.exec();
+                    connection.dbClose();
             }
         }
         else{
@@ -471,6 +679,16 @@ void MainWindow::on_add_2_clicked()
             }
             if (!found){    //add newnumber if it doesnt exist in list
                     ui->radio_amlist->addItem(newNumber);
+
+                    Login connection;
+                    connection.openDb();
+                    QSqlQuery qry;
+                    qry.prepare("INSERT INTO StationAMList (user_id, station_name)"
+                                "VALUES (:user_id, :station_name)");
+                    qry.bindValue(":user_id", user_id);
+                    qry.bindValue(":station_name", newNumber);
+                    qry.exec();
+                    connection.dbClose();
             }
         }
         break;
@@ -480,10 +698,26 @@ void MainWindow::on_add_2_clicked()
 void MainWindow::on_remove_2_clicked()
 {
     if(listener.fm){
+        Login connection;
+        connection.openDb();
+        QSqlQuery qry;
+        qry.prepare("DELETE FROM StationFMList WHERE user_id='" + user_id +
+                    "' AND station_name ='" + ui->radio_fmlist->currentItem()->text() + "'");
+        qry.exec();
+        connection.dbClose();
+
         ui->radio_fmlist->takeItem(ui->radio_fmlist->row(ui->radio_fmlist->currentItem()));
     }
     else{
-         ui->radio_amlist->takeItem(ui->radio_amlist->row(ui->radio_amlist->currentItem()));
+        Login connection;
+        connection.openDb();
+        QSqlQuery qry;
+        qry.prepare("DELETE FROM StationAMList WHERE user_id='" + user_id +
+                    "' AND station_name ='" + ui->radio_amlist->currentItem()->text() + "'");
+        qry.exec();
+        connection.dbClose();
+
+        ui->radio_amlist->takeItem(ui->radio_amlist->row(ui->radio_amlist->currentItem()));
     }
 }
 
@@ -497,4 +731,58 @@ void MainWindow::on_radio_fmlist_activated(const QModelIndex &index)
 {
         QListWidgetItem *num = ui->radio_fmlist->currentItem();
         ui->radio_label->setText(num->text()); //add number from fm list to radio display
+}
+void MainWindow::on_decel_released()
+{
+    if(user.place.distance != 0 && all.trip.Distance == user.place.distance){
+        speed = 0;
+        ui->accel->setDisabled(true);
+        ui->decel->setDisabled(true);
+        ui->setspeed_label->setText(QString::number(speed));
+        ui->nav_label->setText("Destination reached.");
+    }
+}
+
+void MainWindow::on_Overall_clicked()
+{
+    Login connection;
+    connection.openDb();
+    QSqlQueryModel *table = new QSqlQueryModel();
+    QSqlQuery *qry = new QSqlQuery(connection.db);
+    qry->prepare("SELECT * FROM Stats");
+    qry->exec();
+    table->setQuery(*qry);
+    ui->tableView->setModel(table);
+    ui->tableView->horizontalHeader()->sectionResizeMode(QHeaderView::Stretch);
+    connection.dbClose();
+
+
+}
+
+void MainWindow::on_Phone_clicked()
+{
+    Login connection;
+    connection.openDb();
+    QSqlQueryModel *table = new QSqlQueryModel();
+    QSqlQuery *qry = new QSqlQuery(connection.db);
+    qry->prepare("SELECT * FROM NumbersDialed");
+    qry->exec();
+    table->setQuery(*qry);
+    ui->tableView->setModel(table);
+    ui->tableView->horizontalHeader()->sectionResizeMode(QHeaderView::Stretch);
+    connection.dbClose();
+}
+
+void MainWindow::on_Radio_clicked()
+{
+    Login connection;
+    connection.openDb();
+    QSqlQueryModel *table = new QSqlQueryModel();
+    QSqlQuery *qry = new QSqlQuery(connection.db);
+    qry->prepare("SELECT * FROM StationsListenedTo");
+    qry->exec();
+    table->setQuery(*qry);
+    ui->tableView->setModel(table);
+    ui->tableView->horizontalHeader()->sectionResizeMode(QHeaderView::Stretch);
+    connection.dbClose();
 }

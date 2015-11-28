@@ -17,6 +17,27 @@ class Login : public QMainWindow
     Q_OBJECT
 
 public:
+    QSqlDatabase db;
+    QString username;
+
+    bool openDb(){
+        db = QSqlDatabase::addDatabase("QSQLITE");
+        db.setDatabaseName("/Users/alexmcintosh/Team15CSE360/Code/Database/AIOCS.sqlite");
+        if(db.open()){
+            qDebug() << ("Please enter key");
+            return true;
+        }
+        else{
+            qDebug() << ("Failed to open database");
+            return false;
+        }
+    }
+    void dbClose(){
+        db.close();
+        db.removeDatabase(QSqlDatabase::defaultConnection);
+    }
+
+public:
     explicit Login(QWidget *parent = 0);
     ~Login();
 
@@ -28,8 +49,7 @@ public slots:
 
 private:
     Ui::Login *ui;
-    QSqlDatabase db;
-    MainWindow *newMainWindow;
+    //QMainWindow *newMainWindow;
 };
 
 #endif // LOGIN_H
