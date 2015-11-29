@@ -100,7 +100,7 @@ private:
         stat trip;
         QVector<stat> trips;
     }; Stats all;
-    class Drive: public Stats{
+    class Drive{
     public:
         int pFuel = 0;
         int pSpeed = 0;
@@ -121,13 +121,13 @@ private:
         travel stat;
         QVector<int> allSpeed;
     }; Drive user;
-    class Phone: public Drive{
+    class Phone{
     public:
         int pCalls = 0;
         bool phone = false;
         QVector<int> numbers;
     }; Phone caller;
-    class Radio: public Drive{
+    class Radio{
     public:
         int fmcount = 0;
         int amcount = 0;
