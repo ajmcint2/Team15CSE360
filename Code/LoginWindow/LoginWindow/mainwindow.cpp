@@ -332,7 +332,7 @@ void MainWindow::on_zero_clicked()
 //end phone call
 void MainWindow::on_X_clicked()
 {
-    if (count == 10){
+    if (caller.phone){
         Login connection;
         connection.openDb();
         QSqlQuery qry;
@@ -345,6 +345,7 @@ void MainWindow::on_X_clicked()
         qry.exec();
         connection.dbClose();
         caller.pCalls++;
+        caller.phone = false;
     }
 
     t = 0;
@@ -362,6 +363,7 @@ void MainWindow::on_call_clicked()
         currentTime = QTime::currentTime().toString();
         //stops radio from playing during phone call
         rToggle = true;
+        caller.phone = true;
         ui->radio_toggle->setText("ON");
         ui->radio_slider->setValue(0);
 

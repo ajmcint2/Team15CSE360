@@ -124,6 +124,7 @@ private:
     class Phone: public Drive{
     public:
         int pCalls = 0;
+        bool phone = false;
         QVector<int> numbers;
     }; Phone caller;
     class Radio: public Drive{
