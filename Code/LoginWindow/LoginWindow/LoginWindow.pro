@@ -22,8 +22,3 @@ HEADERS  += login.h \
 FORMS    += login.ui \
     mainwindow.ui
 
-RESOURCES +=
-    addFiles.sources = AIOCS.sqlite
-    addFiles.path = .
-
-DEPLOYMENT += addFiles
