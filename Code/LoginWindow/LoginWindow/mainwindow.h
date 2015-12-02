@@ -122,8 +122,6 @@ private:
         location place;
         travel stat;
         QVector<int> allSpeed;
-
-        void populateRadioStation(Drive user, Radio listener);
     }; Drive user;
     class Phone{
     public:

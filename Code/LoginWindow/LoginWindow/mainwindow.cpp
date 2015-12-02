@@ -97,19 +97,6 @@ void MainWindow::empty(){
 }
 
 /*
- * Populates stations for fm and am frequencies
- */
-void MainWindow::Drive::populateRadioStation(Drive user, Phone listener){
-    for (int i = 0; i < 13; i++){
-        listener.fmStations.push_back(user.stat.fwStations[i]); //populate fm stations
-    }
-    for (int i = 0; i < 8; i++){
-        listener.amStations.push_back(user.stat.awStations[i]); //populate fm stations
-    }
-}
-
-
-/*
  * Populates driver saved contact list
  */
 void MainWindow::populate(){
