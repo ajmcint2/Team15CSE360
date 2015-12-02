@@ -21,16 +21,20 @@ Login::~Login()
     delete ui;
 }
 
-
+/**
+ * Opens a new window and passes username into MainWindow class
+ */
 void Login::openMainWindow()
 {
     MainWindow *newMainWindow = new MainWindow();
-    //MainWindow n = new MainWindow();
     newMainWindow->passUser(username);
     newMainWindow->show();
 }
 
-
+/**
+ * Retrieves username and password from user input, and check
+ * database if password is correct for that username
+ */
 void Login::on_pushButton_clicked()
 {
     QString password;

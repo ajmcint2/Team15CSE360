@@ -28,6 +28,7 @@ public:
 
     QTimer *timer;
     QTimer *timer2;
+    QTimer *timer3;
     QTime *time;
 
     QString currentTime;
@@ -38,6 +39,7 @@ public:
 
 private slots:
     void update();
+    void empty();
     void populate();
     void popFm();
     void popAm();
@@ -120,6 +122,8 @@ private:
         location place;
         travel stat;
         QVector<int> allSpeed;
+
+        void populateRadioStation(Drive user, Radio listener);
     }; Drive user;
     class Phone{
     public:
