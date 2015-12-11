@@ -1,20 +1,17 @@
 #include "login.h"
-//#include "mainwindow.h"
 #include "ui_login.h"
+#include "mainwindow.h"
 #include <QtSql>
 #include <QSqlDatabase>
 #include <QSqlQuery>
-#include <sqlite3.h>
 
 Login::Login(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::Login)
 {
     ui->setupUi(this);
-    //connect(ui->pushButton, SIGNAL(click()), this, SLOT(openMainWindow()));
-    db = QSqlDatabase::addDatabase("QSQLITE");
-    db.setDatabaseName("/Users/alexmcintosh/Team15CSE360/Code/Database/AIOCS.sqlite");
-    if(db.open()){
+
+    if(openDb()){
         ui->status->setText("Please enter key");
     }
 }
@@ -24,30 +21,38 @@ Login::~Login()
     delete ui;
 }
 
-
+/**
+ * Opens a new window and passes username into MainWindow class
+ */
 void Login::openMainWindow()
 {
-    newMainWindow = new MainWindow();
-
+    MainWindow *newMainWindow = new MainWindow();
+    newMainWindow->passUser(username);
     newMainWindow->show();
 }
 
-
+/**
+ * Retrieves username and password from user input, and check
+ * database if password is correct for that username
+ */
 void Login::on_pushButton_clicked()
 {
-    QString username, password;
+    QString password;
     username = ui->lineEdit->text();
     password = ui->lineEdit_2->text();
 
+    openDb();
     QSqlQuery qry;
-    if (qry.exec("SELECT * FROM users WHERE username ='" + username +
-                 "' AND password ='" + password + "'")){
+    qry.prepare("SELECT * FROM Drivers WHERE username ='" + username +
+                "' AND password ='" + password + "'");
+    if (qry.exec()){
         int count= 0;
         while (qry.next()){
             count++;
         }
         if (count > 0){
             ui->status->setText("Correct Login");
+            dbClose();
             this->hide();
             openMainWindow();
         }
@@ -56,6 +61,6 @@ void Login::on_pushButton_clicked()
         }
     }
     else {
-         ui->status->setText("Uh oh, error connecting to database");
+         ui->status->setText("Error connecting to database");
     }
 }

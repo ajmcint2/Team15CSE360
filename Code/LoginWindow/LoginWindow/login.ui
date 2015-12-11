@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Login</string>
+   <string>AIOCS</string>
   </property>
   <widget class="QWidget" name="centralWidget">
    <property name="styleSheet">
@@ -20,15 +20,15 @@
    <widget class="QLabel" name="label_username">
     <property name="geometry">
      <rect>
-      <x>100</x>
+      <x>90</x>
       <y>80</y>
-      <width>81</width>
+      <width>91</width>
       <height>25</height>
      </rect>
     </property>
     <property name="styleSheet">
      <string notr="true">color: white;
-font: 25 18pt &quot;Avenir&quot;;</string>
+font: 25 18pt &quot;Helvetica&quot;;</string>
     </property>
     <property name="text">
      <string>Username</string>
@@ -37,15 +37,15 @@ font: 25 18pt &quot;Avenir&quot;;</string>
    <widget class="QLabel" name="label_password">
     <property name="geometry">
      <rect>
-      <x>100</x>
+      <x>90</x>
       <y>110</y>
-      <width>74</width>
+      <width>81</width>
       <height>25</height>
      </rect>
     </property>
     <property name="styleSheet">
      <string notr="true">color: rgb(255, 255, 255);
-font: 25 18pt &quot;Avenir&quot;;</string>
+font: 25 18pt &quot;Helvetica&quot;;</string>
     </property>
     <property name="text">
      <string>Password</string>
@@ -92,16 +92,16 @@ border-radius: 20px;
     </property>
     <property name="styleSheet">
      <string notr="true">#pushButton{
-background-color: rgb(0, 70, 122);
+background-color: qlineargradient(spread:pad, x1:0.483, y1:1, x2:0.472907, y2:0, stop:0 rgba(34, 112, 149, 255), stop:1 rgba(45, 150, 200, 255));
 color: white;
-font: 25 36pt &quot;Avenir&quot;;
+font: 25 36pt &quot;Helvetica&quot;;
 border-radius: 15px;
 }
 
 #pushButton:pressed{
-background-color: rgb(0, 58, 104);
+background-color: rgb(46, 132, 164);
 color: white;
-font: 25 36pt &quot;Avenir&quot;;
+font: 25 36pt &quot;Helvetica&quot;;
 border-radius: 15px;
 }</string>
     </property>
@@ -120,7 +120,7 @@ border-radius: 15px;
     </property>
     <property name="styleSheet">
      <string notr="true">color: white;
-font: 25 25pt &quot;Avenir&quot;;</string>
+font: 25 25pt &quot;Helvetica&quot;;</string>
     </property>
     <property name="text">
      <string>Welcome</string>
